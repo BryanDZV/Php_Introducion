@@ -1,0 +1,9 @@
+# Ignorar configuraciones locales de Wamp
+*.log
+vendor/
+node_modules/
+*.env
+database/*.sql
+
+# Ignorar archivos sensibles
+config.local.php
