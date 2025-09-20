@@ -1,9 +1,28 @@
-# Ignorar configuraciones locales de Wamp
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Configuración local (ajústalo a tu proyecto)
+config.php
+*.ini
+*.env
+
+# Archivos temporales / cachés
 *.log
+*.tmp
+*.bak
+*.swp
+cache/
+tmp/
+logs/
+
+# Dependencias (si usas Composer o Node)
 vendor/
 node_modules/
-*.env
-database/*.sql
 
-# Ignorar archivos sensibles
-config.local.php
+# Archivos de IDE/editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
