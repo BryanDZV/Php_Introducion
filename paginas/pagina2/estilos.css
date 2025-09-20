@@ -1,0 +1,15 @@
+
+    .tabla {
+        display: inline-block; /* Hace que las tablas estén una al lado de otra */
+        margin: 10px;
+        border-collapse: collapse;
+        vertical-align: top;
+    }
+    .tabla th, .tabla td {
+        border: 1px solid #333;
+        padding: 5px 10px;
+        text-align: center;
+    }
+    .tabla th {
+        background-color: #f2f2f2;
+    }
