@@ -1,0 +1,13 @@
+
+  table    { 
+    border-collapse: collapse; /* bordes pegados */
+    width: 100%; 
+  }
+  td, th { 
+    border: 1px solid #333; 
+    padding: 8px; 
+    text-align: center; 
+  }
+  .valor-alto { 
+    background-color: #f99; /* resalta valores > 4 */
+  }

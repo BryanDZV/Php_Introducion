@@ -1,38 +1,30 @@
 <?php
+/*1.
+Para garantizar la cadena de frío de cierto número de cajas con vacunas en un transporte se ha instalado en cada una de ellas un sensor que ha ido recogiendo la evolución de la temperatura.
+Los datos recogidos por los sensores están disponibles en el array $temperaturas del código que se muestra a continuación.
+*/
 $temperaturas = array();
 $temperaturas['Caja_1'] = array(1, 1, 2, 3, 2, 1, 2, 3, 3, 3, 2, 1, 3, 4);
 $temperaturas['Caja_2'] = array(0, 0, 3, 2, 4, 3, 2, 0, 1, 2, 3, 4, 2, 1);
 $temperaturas['Caja_3'] = array(3, 1, 2, 3, 5, 2, 2, 0, 1, 2, 3, 4, 2, 1);
 $temperaturas['Caja_4'] = array(2, 2, 2, 3, 5, 2, 3, 2, 0, 1, 2, 3, 0, 1);
 $temperaturas['Caja_5'] = array(0, 3, 2, 3, 5, 2, 3, 2, 0, 1, 2, 3, 0, 1);
-?>
 
+define("NUMTABLAS", 4);
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tabla de Temperaturas</title>
-<style>
-  table { 
-    border-collapse: collapse; /* bordes pegados */
-    width: 100%; 
-  }
-  td, th { 
-    border: 1px solid #333; 
-    padding: 8px; 
-    text-align: center; 
-  }
-  .valor-alto { 
-    background-color: #f99; /* resalta valores > 4 */
-  }
-</style>
+<link rel="stylesheet" type="" href="./estilosb1.css">
 </head>
 <body>
 
 <h1>Tabla de Temperaturas</h1>
 
-<table>
+<table >
   <?php foreach ($temperaturas as $nombreCaja => $valores) { ?>  <!-- abre foreach -->
     <tr>
       <td><strong><?php echo $nombreCaja; ?></strong></td>
@@ -45,15 +37,34 @@ $temperaturas['Caja_5'] = array(0, 3, 2, 3, 5, 2, 3, 2, 0, 1, 2, 3, 0, 1);
   <?php } ?>  <!-- cierra foreach -->
 </table>
 
+<h1>Tabla de multiplicar</h1>
+<table >
+  <?php for ($i = 1; $i <= NUMTABLAS; $i++) { ?>
+    
+    <tr>
+      <td colspan="10" ><strong>Tabla del <?php echo $i; ?></strong></td>
+      
+    </tr>
+    <tr>
+      
+      <?php for ($j = 1; $j <= 10; $j++) { ?>
+        
+        <td><?php echo "$i x $j = " . ($i * $j); ?></td>
+      
+      <?php } ?>
+    </tr>
+    
+  <?php } ?>
+  
+</table>
+
+<br>
+
 </body>
 </html>
 
 
 <?php
-/*1.
-Para garantizar la cadena de frío de cierto número de cajas con vacunas en un transporte se ha instalado en cada una de ellas un sensor que ha ido recogiendo la evolución de la temperatura.
-Los datos recogidos por los sensores están disponibles en el array $temperaturas del código que se muestra a continuación.
-*/
 $temperaturas = array();
 $temperaturas['Caja_1'] = array(1, 1, 2, 3, 2, 1, 2, 3, 3, 3, 2, 1, 3, 4);
 $temperaturas['Caja_2'] = array(0, 0, 3, 2, 4, 3, 2, 0, 1, 2, 3, 4, 2, 1);
@@ -81,11 +92,10 @@ foreach ($temperaturas as $nombreCaja => $valores) {
 echo "</table>";
 echo "<br>";
 echo "<br>";
-echo "<br>";
-echo "<br>";
+
 /*2 Realizar un programa en PHP en el que se obtengan las tablas de multiplicar. Sacará tantas tablas como indique la constante NUMTABLAS.*/
 
-define("NUMTABLAS", 4);
+
 
 for ($i = 1; $i <= NUMTABLAS; $i++) {
     for ($j = 1; $j <= 10; $j++) {
