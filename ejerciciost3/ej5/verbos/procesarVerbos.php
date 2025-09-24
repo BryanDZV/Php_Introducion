@@ -6,14 +6,7 @@ El programa mostrará el verbo en español y  tendremos tres caja de texto para 
 Existirá un botón para finalizar cuando deseemos.
 Cuando finaliza el juego te muestra una estadística de aciertos, fallos, cantidad de preguntas hechas, etc.
 
-2.	Vamos a realizar un formulario de registro con los siguientes campos . El alumno puede practicar para hacer un cv.
 
-Nombre:
-Direccion:
-Fecha_naciminet:
-Idiomas (check)
-Sexo (radio)
-Aficiones (Select multiple)
 */
 
 
@@ -29,6 +22,7 @@ $verbos = [
 ];
 //español
 $verbos_es = ["ser", "ir", "tener", "hacer", "venir"];
+
 // acumuladores
 $aciertos = isset($_POST['aciertos']) ? (int)$_POST['aciertos'] : 0;
 $fallos   = isset($_POST['fallos']) ? (int)$_POST['fallos'] : 0;
@@ -41,14 +35,14 @@ if (isset($_POST['verbo'], $_POST['presente'], $_POST['pasado'], $_POST['futuro'
     $futuro     = strtolower(trim($_POST['futuro']));
     $accion     = $_POST['accion'];
 
- 
-    if ($verbos[$verbo_base]['presente'] === $presente) $aciertos++;
+ $formas=$verbos[$verbo_base];
+    if ($formas['presente'] === $presente) $aciertos++;
     else $fallos++;
 
-    if ($verbos[$verbo_base]['pasado'] === $pasado) $aciertos++;
+    if ($formas['pasado'] === $pasado) $aciertos++;
     else $fallos++;
 
-    if ($verbos[$verbo_base]['participio'] === $futuro) $aciertos++;
+    if ($formas['participio'] === $futuro) $aciertos++;
     else $fallos++;
 
     
