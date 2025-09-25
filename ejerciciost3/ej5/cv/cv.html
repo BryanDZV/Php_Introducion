@@ -4,70 +4,69 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>cv</title>
-    <link rel="stylesheet" href="./estilos.css">
+    <link rel="stylesheet" href="./estilos.css" />
   </head>
-  <body>
-    <!-- 2.	Vamos a realizar un formulario de registro con los siguientes campos . El alumno puede practicar para hacer un cv.
 
-Nombre:
-Direccion:
-Fecha_naciminet:
-Idiomas (check)
-Sexo (radio)
-Aficiones (Select multiple)*/
--->
+  <body>
     <h1>Curriculum</h1>
+
     <form action="./cv.php" method="post">
       <div>
         <p>
-          Nombre:
-
-          <label for="1">
-            <input type="text" name="nombre" id="1" />
-          </label>
+          <label for="1">Nombre:</label>
+          <input type="text" name="nombre" id="1" required />
         </p>
-        <p>
-          Dirección:
 
-          <label for="2">
-            <input type="text" name="dir" id="2" />
-          </label>
+        <p>
+          <label for="2">Dirección:</label>
+          <input type="text" name="direccion" id="2" required />
         </p>
-        <p>
-          Fecha de Nacimiento:
 
-          <label for="3">
-            <input type="date" name="fecha" id="3" />
-          </label>
+        <p>
+          <label for="3">Fecha de Nacimiento:</label>
+          <input type="date" name="fecha" id="3" required />
         </p>
-        <p>
-          Idiomas:
 
-          <label for="4">
-            <input type="checkbox" name="idioma" id="4" />
-          </label>
+        <p>
+          <label>Idiomas:</label><br />
+          <input type="checkbox" name="idioma[]" value="ingles" id="idioma1" />
+          <label for="idioma1">Inglés</label>
+          <input type="checkbox" name="idioma[]" value="frances" id="idioma2" />
+          <label for="idioma2">Francés</label>
+          <input type="checkbox" name="idioma[]" value="aleman" id="idioma3" />
+          <label for="idioma3">Alemán</label>
         </p>
+
         <p>
-          Sexo:
-
-          <label for="5"
-            >Femenido
-            <input type="radio" name="sexo" id="5" value="femenino" />
-
-            Masculino
-            <input type="radio" name="sexo" id="5" value="masculino" />
-          </label>
+          <label>Sexo:</label><br />
+          <input
+            type="radio"
+            name="sexo"
+            id="sexoF"
+            value="femenino"
+            required
+          />
+          <label for="sexoF">Femenino</label>
+          <input
+            type="radio"
+            name="sexo"
+            id="sexoM"
+            value="masculino"
+            required
+          />
+          <label for="sexoM">Masculino</label>
         </p>
+
         <p>
-          <label for="6">Selecciona los Aficiones que te gusten:</label>
-          <br />
-          <select multiple name="aficiones" id="6">
-            <option>nadar</option>
-            <option>comer</option>
-            <option>dormir</option>
+          <label for="6">Selecciona las aficiones que te gusten:</label><br />
+          <select multiple name="aficiones[]" id="6" required>
+            <option value="nadar">Nadar</option>
+            <option value="comer">Comer</option>
+            <option value="dormir">Dormir</option>
           </select>
         </p>
       </div>
+
       <input type="submit" value="Enviar" />
     </form>
   </body>

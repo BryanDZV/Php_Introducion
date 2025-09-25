@@ -7,71 +7,83 @@ Fecha_naciminet:
 Idiomas (check)
 Sexo (radio)
 Aficiones (Select multiple)*/
+$nombre = null;
+$direccion = null;
+$fecha = null;
+$idiomas = array();
+$sexo = null;
+$aficiones = array();
 
-$nombre=null;
-$direccion=null;
-$fecha=null;
-$idioma=null;
-$sexo=null;
-$aficiones=null;
+if (
+    !empty($_POST["nombre"]) &&
+    !empty($_POST["direccion"]) &&
+    !empty($_POST["fecha"]) &&
+    !empty($_POST["sexo"]) &&
+    !empty($_POST["aficiones"])
+) {
 
-if(isset($_POST["nombre"],$_POST["direccion"],$_POST["fecha"],$_POST["idioma"],$_POST["sexo"],$_POST["aficiones"])){
+    $nombre    = trim($_POST["nombre"]);
+    $direccion = trim($_POST["direccion"]);
+    $fecha     = trim(htmlspecialchars($_POST["fecha"]));
+    $sexo      = trim(htmlspecialchars($_POST["sexo"]));
+    $aficiones = $_POST["aficiones"]; // array
+    $idiomas   = isset($_POST["idioma"]) ? $_POST["idioma"] : array();
 
-    $nombre = trim($_POST["nombre"]);
-    $direccion=trim($_POST["direccion"]);
-    $fecha=trim(htmlspecialchars($_POST["fecha"]));
-    $idioma=trim(htmlspecialchars($_POST["idioma"]));
-    $sexo=trim(htmlspecialchars($_POST["sexo"]));
-    $aficiones=trim(htmlspecialchars($_POST["aficiones"]));
 
-    echo"".$nombre."".$direccion."".$fecha.$idioma."".$sexo."".$aficiones;
-   ?> 
-   <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cv</title>
-</head>
-<body>
-<h1>Tu Curriculum</h1>
 
-<div>
-    <p>TU NOMBRES es <?php
-    echo $nombre;
-    ?>
-    </p><p>TU Direccion es <?php
-    echo $direccion;
-    ?>
-    </p>
-    <p>TU Fecha de Nacimiento es <?php
-    echo $fecha;
-    ?>
-    </p>
-    <p>Sabes idioma :<?php
-    if ($idioma==="on") {
-        $idioma="si";
-    }
-    echo $idioma;
-    ?>
-    </p>
-    <p>TU Genero es <?php
-    echo $sexo;
-    ?>
-    </p>
-    <p>TU Aficiones es <?php
-    echo $aficiones;
-    ?>
-    </p>
 
-</div>
+?>
+    <!DOCTYPE html>
+    <html lang="en">
 
-    
-</body>
-</html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>cv</title>
+        <link rel="stylesheet" href="./estilos.css">
+    </head>
+
+    <body>
+        <h1>Tu Curriculum</h1>
+
+        <div>
+            <p><span>Nombre:</span> <?php echo htmlspecialchars($nombre); ?></p>
+            <p><span>Dirección:</span> <?php echo htmlspecialchars($direccion); ?></p>
+            <p><span>Fecha de Nacimiento:</span> <?php echo htmlspecialchars($fecha); ?></p>
+
+            <p><span>Idiomas:</span>
+                <?php
+                if (!empty($idiomas)) {
+                    foreach ($idiomas as $i) {
+                        echo htmlspecialchars($i) . " ";
+                    }
+                } else {
+                    echo "Ninguno";
+                }
+                ?>
+            </p>
+
+            <p><span>Género:</span> <?php echo htmlspecialchars($sexo); ?></p>
+
+            <p><span>Aficiones:</span>
+                <?php
+                if (!empty($aficiones)) {
+                    foreach ($aficiones as $a) {
+                        echo htmlspecialchars($a) . " ";
+                    }
+                } else {
+                    echo "Ninguna";
+                }
+                ?>
+            </p>
+        </div>
+
+    </body>
+
+    </html>
+
 <?php
-}else{
-    echo "no hay datos";
+} else {
+    echo "Faltan datos obligatorios.";
 }
 ?>
-
