@@ -1,0 +1,14 @@
+body{
+   background-color: bisque;
+   color: black;
+}
+select{
+    background-color: azure;
+    display: block;
+    border: none;
+}
+form{
+    background-color:azure;
+    border: 1px solid ;
+    
+}

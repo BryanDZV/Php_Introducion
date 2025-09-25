@@ -18,23 +18,15 @@ $aficiones=null;
 if(isset($_POST["nombre"],$_POST["direccion"],$_POST["fecha"],$_POST["idioma"],$_POST["sexo"],$_POST["aficiones"])){
 
     $nombre = trim($_POST["nombre"]);
-    $direccion=trim($_POST["dir"]);
+    $direccion=trim($_POST["direccion"]);
     $fecha=trim(htmlspecialchars($_POST["fecha"]));
     $idioma=trim(htmlspecialchars($_POST["idioma"]));
     $sexo=trim(htmlspecialchars($_POST["sexo"]));
     $aficiones=trim(htmlspecialchars($_POST["aficiones"]));
 
     echo"".$nombre."".$direccion."".$fecha.$idioma."".$sexo."".$aficiones;
-    
-}else{
-    echo "no hay datos";
-}
-
-
-
-
-?>
-<!DOCTYPE html>
+   ?> 
+   <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -77,3 +69,9 @@ if(isset($_POST["nombre"],$_POST["direccion"],$_POST["fecha"],$_POST["idioma"],$
     
 </body>
 </html>
+<?php
+}else{
+    echo "no hay datos";
+}
+?>
+

@@ -12,7 +12,7 @@ Cuando finaliza el juego te muestra una estadística de aciertos, fallos, cantid
 
 
 
-// Array de verbos irregulares
+
 $verbos = [
     "ser"   => ["presente" => "be", "pasado" => "was/were", "participio" => "been"],
     "ir"    => ["presente" => "go", "pasado" => "went", "participio" => "gone"],
@@ -20,10 +20,10 @@ $verbos = [
     "hacer" => ["presente" => "do", "pasado" => "did", "participio" => "done"],
     "venir" => ["presente" => "come", "pasado" => "came", "participio" => "come"]
 ];
-//español
+
 $verbos_es = ["ser", "ir", "tener", "hacer", "venir"];
 
-// acumuladores
+
 $aciertos = isset($_POST['aciertos']) ? (int)$_POST['aciertos'] : 0;
 $fallos   = isset($_POST['fallos']) ? (int)$_POST['fallos'] : 0;
 
@@ -75,7 +75,6 @@ $verbo_aleatorio = $verbos_es[array_rand($verbos_es)];
     <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
       
         <input type="hidden" name="verbo" value="<?php echo $verbo_aleatorio; ?>">
-        <!-- vuelvo a pasar datos para acumular -->
         <input type="hidden" name="aciertos" value="<?php echo $aciertos; ?>">
         <input type="hidden" name="fallos" value="<?php echo $fallos; ?>">
 
