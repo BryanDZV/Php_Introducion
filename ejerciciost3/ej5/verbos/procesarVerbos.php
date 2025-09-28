@@ -9,10 +9,6 @@ Cuando finaliza el juego te muestra una estadística de aciertos, fallos, cantid
 
 */
 
-
-
-
-
 $verbos = [
     "ser"   => ["presente" => "be", "pasado" => "was/were", "participio" => "been"],
     "ir"    => ["presente" => "go", "pasado" => "went", "participio" => "gone"],
