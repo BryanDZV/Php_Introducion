@@ -1,30 +1,51 @@
 <?php
-/*1.	Realizar un formulario básico para subir un unico fichero*/
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_FILES['archivo']) && $_FILES['archivo']['error'] == 0) {
+    if (isset($_FILES['archivo'])) {
         $nombreArchivo = $_FILES['archivo']['name'];
         $rutaTemporal = $_FILES['archivo']['tmp_name'];
-        $rutaDestino = './subirImagenes' . $nombreArchivo;
-        $size=$_FILES['archivo']['size'];
-        $Tipo= $_FILES['archivo']['type'];
-        $CodigoError= $_FILES['archivo']['error'];
+        $rutaDestino = './imagenesSubidas/' . $nombreArchivo;
+        $size = $_FILES['archivo']['size'];
+        $tipo = $_FILES['archivo']['type'];
+        $codigoError = $_FILES['archivo']['error'];
 
-        // Crear el directorio uploads si no existe
-        if (!is_dir('./subirImagenes')) {
-            mkdir('./subirImagenes', 0777, true);
+
+        // Crear el directorio si no existe
+        if (!is_dir('./imagenesSubidas/')) {
+            mkdir('./imagenesSubidas/');
         }
 
-        if (move_uploaded_file($rutaTemporal, $rutaDestino)) {
-          ;
-            echo "Nombre original: " . $_FILES['archivo']['name'] . "<br>". htmlspecialchars($nombreArchivo). "<br>";
-            echo "Nombre temporal: " . $_FILES['archivo']['tmp_name'] . htmlspecialchars($rutaTemporal) . "<br>";
-            echo "Tamaño: " . $_FILES['archivo']['size'] .  htmlspecialchars($size). " bytes<br>";
-            echo "Tipo: " . $_FILES['archivo']['type'] . htmlspecialchars($Tipo). "<br>";
-            echo "Código de error: " . $_FILES['archivo']['error'] . htmlspecialchars($CodigoError). "<br>";
+        // Valido
+        if ($tipo == "image/gif" || $tipo == "image/jpeg" || $tipo == "image/png") {
+            if (move_uploaded_file($rutaTemporal, $rutaDestino)) {
+                echo "<div class='resultado exito'>";
+                echo "<h2>Archivo subido correctamente</h2>";
+                echo "<p><strong>Nombre original:</strong> " . htmlspecialchars($nombreArchivo) . "</p>";
+                echo "<p><strong>Tamaño:</strong> " . htmlspecialchars($size) . " bytes</p>";
+                echo "<p><strong>Tipo:</strong> " . htmlspecialchars($tipo) . "</p>";
+                echo "</div>";
+            } else {
+                echo "<div class='resultado error'>Error al mover el archivo.</div>";
+            }
         } else {
-            echo "Error al mover el archivo.";
+            echo "<div class='resultado error'>Formato no válido. Solo GIF, JPG o PNG.</div>";
         }
     } else {
-        echo "Error al subir el archivo.";
+        echo "<div class='resultado error'>Error al subir el archivo.</div>";
+    }
+
+     if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        if (isset($_FILES['archivo'])) {
+            $nombreArchivoABuscar = $_FILES['archivo']['name'];
+            $ruta = 'imagenesSubidas/' . $nombreArchivoABuscar;
+
+            if (file_exists($ruta)) {
+                echo "El archivo $ruta existe.";
+            } else {
+                echo "No se encontró $ruta.";
+            }
+        } else {
+            echo "error al enviar para buscar";
+            
+        }
     }
 }
