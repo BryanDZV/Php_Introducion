@@ -10,7 +10,7 @@ $temperaturas['Caja_3'] = array(3, 1, 2, 3, 5, 2, 2, 0, 1, 2, 3, 4, 2, 1);
 $temperaturas['Caja_4'] = array(2, 2, 2, 3, 5, 2, 3, 2, 0, 1, 2, 3, 0, 1);
 $temperaturas['Caja_5'] = array(0, 3, 2, 3, 5, 2, 3, 2, 0, 1, 2, 3, 0, 1);
 
-define("NUMTABLAS", 4);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -93,18 +93,6 @@ echo "</table>";
 echo "<br>";
 echo "<br>";
 
-/*2 Realizar un programa en PHP en el que se obtengan las tablas de multiplicar. Sacará tantas tablas como indique la constante NUMTABLAS.*/
-
-
-
-for ($i = 1; $i <= NUMTABLAS; $i++) {
-    for ($j = 1; $j <= 10; $j++) {
-        $r = $j * $i;
-        echo $r . "\n";
-    }
-    echo "<br>";
-    echo "<br>";
-}
 
 /*3.
 Realizar el ejercicio 1 y 2 utilizando Nowdoc o Heredoc
