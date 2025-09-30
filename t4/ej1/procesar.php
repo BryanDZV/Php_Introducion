@@ -10,11 +10,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             mkdir($rutaDir);
         }
 
-        $nuevoNombre = $nombre . "_" . date("Ymd_His");
+        $nuevoNombre = date("d-m-Y") . "_" . $nombre;
 
         $destino = $rutaDir . $nuevoNombre;
 
-        if (!move_uploaded_file($nombreTemporal, $destino)) {
+        if (move_uploaded_file($nombreTemporal, $destino)) { ?>
+            <!DOCTYPE html>
+            <html lang="en">
+
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Respuesta Formulario 1</title>
+                <link rel="stylesheet" href="estilos.css">
+            </head>
+
+            <body>
+                <header>
+
+                </header>
+                <main>
+                   <h1>FICHERO SUBIDO CON EL NOMBRE: </h1>
+                   <p><?php
+                   echo $nuevoNombre;
+                   ?></p>
+
+
+                </main>
+                <footer>
+
+                </footer>
+
+            </body>
+
+            </html>
+<?php
+
+
+        } else {
             echo "Error al mover el archivo.";
         }
     } else {
@@ -24,32 +57,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "Problema con el método de envío";
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Respuesta</title>
-    <link rel="stylesheet" href="estilos.css">
-</head>
-
-<body>
-    <header>
-
-    </header>
-    <main>
-        <p><?php
-            echo "FICHERO SUBIDO CON EL NOMBRE: " . $nuevoNombre;
-            ?>
-            </p>
-        
-
-    </main>
-    <footer>
-
-    </footer>
-
-</body>
-
-</html>

@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 mkdir($rutaDir);
             }
 
-            $nuevoNombre = $nombre . "_" . date("Ymd_His");
+            $nuevoNombre = date("d-m-Y") . "_" . $nombre;
 
             $destino = $rutaDir . $nuevoNombre;
 
@@ -24,25 +24,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <head>
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Respuesta</title>
+                    <title>Respuesta Formulario 2</title>
                     <link rel="stylesheet" href="estilos.css">
                 </head>
 
                 <body>
                     <header>
-                        <h1>respuesta</h1>
+                        <h1>Respuesta</h1>
 
                     </header>
                     <main>
-                        <p>
-                            <?php
-                            echo "Archivo subido correctamente: $nuevoNombre";
+                        <div class="box-img">
+                            <h1>FICHERO SUBIDO CON EL NOMBRE: </h1>
+                        <p><?php
+                            echo $nuevoNombre;
+                            ?></p>
+                        
+                        
+                        </div>
+                        <img class="imagen" src=" <?php echo $destino ?>" alt='Archivo subido'>
 
-                            ?>
-                        </p>
-                        <br>
-                            <img class="imagen" src=" <?php echo $destino ?>" alt='Archivo subido'>
-            
+                        
+
 
 
 
@@ -64,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo "Error al mover el archivo.";
             }
         } else {
-            echo "formato no valido.";
+            echo "<h1>Formato no Válido</h1>";
         }
     } else {
         echo "Problema con el método de envío";

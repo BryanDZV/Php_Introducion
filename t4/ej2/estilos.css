@@ -27,7 +27,12 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+        flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 40px 20px;
+    flex-direction: column;
 }
 
 main p {
@@ -47,9 +52,18 @@ footer {
     font-size: 14px;
 }
 
-.imagen {
-    width:70px;
-    height:70px;
+.box-img {
+        display: grid;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    justify-items: center;
+}
+img{
+        border-radius: 19px;
+    width: 250px;
+    height: 250px;
 }
 
 /* Responsive */
