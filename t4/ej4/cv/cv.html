@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cv</title>
+    <link rel="stylesheet" href="./estilos.css" />
+  </head>
+
+  <body>
+    <h1>Curriculum</h1>
+
+    <form action="./cv.php" method="post">
+      <div>
+        <p>
+          <label for="1">Nombre:</label>
+          <input type="text" name="nombre" id="1" required />
+        </p>
+
+        <p>
+          <label for="2">Dirección:</label>
+          <input type="text" name="direccion" id="2" required />
+        </p>
+
+        <p>
+          <label for="3">Fecha de Nacimiento:</label>
+          <input type="date" name="fecha" id="3" required />
+        </p>
+
+        <p>
+          <label>Idiomas:</label><br />
+          <input type="checkbox" name="idioma[]" value="ingles" id="idioma1" />
+          <label for="idioma1">Inglés</label>
+          <input type="checkbox" name="idioma[]" value="frances" id="idioma2" />
+          <label for="idioma2">Francés</label>
+          <input type="checkbox" name="idioma[]" value="aleman" id="idioma3" />
+          <label for="idioma3">Alemán</label>
+        </p>
+
+        <p>
+          <label>Sexo:</label><br />
+          <input
+            type="radio"
+            name="sexo"
+            id="sexoF"
+            value="femenino"
+            required
+          />
+          <label for="sexoF">Femenino</label>
+          <input
+            type="radio"
+            name="sexo"
+            id="sexoM"
+            value="masculino"
+            required
+          />
+          <label for="sexoM">Masculino</label>
+        </p>
+
+        <p>
+          <label for="6">Selecciona las aficiones que te gusten:</label><br />
+          <select multiple name="aficiones[]" id="6" required>
+            <option value="nadar">Nadar</option>
+            <option value="comer">Comer</option>
+            <option value="dormir">Dormir</option>
+          </select>
+        </p>
+      </div>
+
+      <input type="submit" value="Enviar" />
+    </form>
+  </body>
+</html>
