@@ -1,24 +1,17 @@
 <?php
-$pajar='Ana Irena Palma';
-$aguja='Ana';
-
-$palabras = explode(" ", $pajar);
-        var_dump($palabras);
-
-        for ($i= 0; $i < count($palabras); $i++) { 
-
-            if ($palabras[$i]===$aguja) {
-                echo "la palabra ". $palabras[$i]. " se econtro en la posicion " . $i;
-               
-        }}
-
-function buscar($aguja,$pajar){
-    
-        
+$pajar = 'Ana Irena Palma';
+$aguja = 'Ana';
 
 
-    
+function buscar($aguja, $pajar)
+{
+        $posiciones = [];
+        $pos = 0;
 
-};
+        while (($pos = strpos($pajar, $aguja, $pos)) !== false) {
+                $posiciones[] = $pos;
+                $pos += strlen($aguja);
+        }
 
-?>
+        return empty($posiciones) ? false : $posiciones;
+}
