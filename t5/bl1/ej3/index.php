@@ -26,11 +26,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             header("Location: verDatos.php?usuario=" . $usuario);
             exit();
+            
+           
         } else {
 
             header("Location: error.php?usuario=" . $usuario);
-
             exit();
+            
+           
         }
     } else {
         header("Location:" . $_SERVER["PHP_SELF"]);
