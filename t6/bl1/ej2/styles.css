@@ -1,0 +1,23 @@
+body {
+  background-color: blanchedalmond;
+}
+
+.titulo {
+  background-color: red;
+}
+.formulario {
+  display: flex;
+  justify-content: space-between;
+}
+.entrada {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+.entrada input {
+  background-color: red;
+}
+.refresh {
+  background-color: green;
+}

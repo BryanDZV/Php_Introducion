@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editor de texto</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="titulo">
+        <h1>BATERÍA 4: EJERCICIO 1 (editor de texto)</h1>
+      </div>
+    </header>
+    <main>
+      <label
+        ><input type="checkbox" /> Activar
+        <code>field-sizing: content</code></label
+      >
+      <form class="formulario" action="procesar.php" method="post">
+        <div class="entrada">
+          <input type="submit" name="accion" value="Remark" />
+          <input type="submit" name="accion" value="Remove" />
+          <input type="submit" name="accion" value="Replace" />
+          <input type="submit" name="accion" value="Count Words" />
+          <input type="submit" name="accion" value="Count Vowels" />
+          <input type="submit" name="accion" value="Lower Case" />
+          <input type="submit" name="accion" value="Upper Case" />
+        </div>
+        <div class="areas">
+          <textarea
+            class="text-area"
+            name="buscar"
+            cols="100"
+            rows="15"
+            placeholder="Texto a buscar"
+          ></textarea>
+          <textarea
+            class="text-area"
+            name="cadena"
+            cols="100"
+            rows="15"
+            placeholder="ESCRIBE TU TEXTO"
+          >
+          </textarea>
+        </div>
+
+        <input class="refresh" type="submit" value="Refresh" />
+      </form>
+    </main>
+
+    <footer></footer>
+  </body>
+</html>
