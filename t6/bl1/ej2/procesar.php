@@ -1,23 +1,38 @@
 <?php
 require "./funciones.php";
+
 if (
-    isset($_POST["buscar"]) && !empty(trim($_POST["buscar"]))
-    && isset($_POST["accion"]) && !empty(trim($_POST["accion"])) && isset($_POST["accion"]) && !empty(trim($_POST["accion"]))
+    isset($_POST["buscar"]) && !empty(trim($_POST["buscar"])) &&
+    isset($_POST["accion"]) && !empty(trim($_POST["accion"])) &&
+    isset($_POST["cadena"]) && !empty(trim($_POST["cadena"]))
 ) {
     $buscar = trim($_POST["buscar"]);
     $accion = trim($_POST["accion"]);
     $cadena = trim($_POST["cadena"]);
 
-
-    //echo    "" . $buscar . "<br>" . $accion . "<br>" . $cadena;
     $resultado = "";
-    if ($accion == "Remark") {
-        global $resultado;
-        $resultado = remark($buscar, $cadena);
-        // echo $resultado;
-    } elseif ($accion == "Remove") {
+    $resultadoR = "";
 
+    if ($accion == "Replace") {
+        $resultado = replace($buscar, $cadena);
+    } elseif ($accion == "Remove") {
         $resultado = remove($buscar, $cadena);
-        // echo $resultado;
+    } elseif ($accion == "Remark") {
+        $resultadoR = remark($buscar, $cadena);
+    } elseif ($accion == "Count Words") {
+        $resultado = countWords($cadena);
+    } elseif ($accion == "Count Vowels") {
+        $resultado = countVowels($cadena);
+    } elseif ($accion == "Lower Case") {
+        $resultado = strtolower($cadena);
+    } elseif ($accion == "Upper Case") {
+        $resultado = strtoupper($cadena);
+    } else {
+        $resultado = "Acción no válida.";
     }
-};
+
+    header("Location: index.php?resultado=" . ($resultado) . "&resultadoR=" . ($resultadoR));
+} else {
+    $resultado = "ERROR AL COMPROBAR DATOS procesar.php  ";
+    header("Location: index.php?resultado=" . ($resultado));
+}

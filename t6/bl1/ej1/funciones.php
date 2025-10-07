@@ -15,3 +15,29 @@ function buscar($aguja, $pajar)
 
         return empty($posiciones) ? false : $posiciones;
 }
+
+
+
+function buscarRecursiva($aguja, $pajar, $inicio = 0)
+{
+        $pos = strpos($pajar, $aguja, $inicio);
+
+        if ($pos === false) {
+                return false; // Caso base
+        }
+
+        // Llamada recursiva
+        $resto = buscar($aguja, $pajar, $pos + strlen($aguja));
+
+
+        if ($resto === false) {
+                return [$pos];
+        } else {
+
+                $resultado = []; //es dinamico 
+                foreach ($resto as $r) {
+                        $resultado[] = $r;
+                }
+                return $resultado;
+        }
+}
