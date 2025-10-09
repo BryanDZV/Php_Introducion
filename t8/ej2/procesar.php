@@ -1,0 +1,52 @@
+<?php
+require "calendario_funciones.php";
+
+if (isset($_POST["year"], $_POST["mes"]) && !empty($_POST["year"]) && !empty($_POST["mes"])) {
+    $year = $_POST["year"];
+    $mes = $_POST["mes"];
+    switch (strtolower($mes)) {
+        case "enero":
+            $mes = 1;
+            break;
+        case "febrero":
+            $mes = 2;
+            break;
+        case "marzo":
+            $mes = 3;
+            break;
+        case "abril":
+            $mes = 4;
+            break;
+        case "mayo":
+            $mes = 5;
+            break;
+        case "junio":
+            $mes = 6;
+            break;
+        case "julio":
+            $mes = 7;
+            break;
+        case "agosto":
+            $mes = 8;
+            break;
+        case "septiembre":
+            $mes = 9;
+            break;
+        case "octubre":
+            $mes = 10;
+            break;
+        case "noviembre":
+            $mes = 11;
+            break;
+        case "diciembre":
+            $mes = 12;
+            break;
+        default:
+            $mes = 0;
+    }
+
+    $datos = calendario_mensual($year, $mes);
+    echo pintarCalendario($datos);
+} else {
+    header("Location:index.php?resultado=error");
+}

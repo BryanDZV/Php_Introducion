@@ -1,0 +1,129 @@
+<?php
+function calendario_mensual($year, $mes)
+{
+    $diasSemana = ["L", "M", "X", "J", "V", "S", "D"];
+    $stampMes = mktime(0, 0, 0, $mes, 1, $year);
+    //$nombreMes = date("F", $stampMes); en ingles 
+    switch (($mes)) {
+        case 1:
+            $nombreMes = "Enero";
+            break;
+        case 2:
+            $nombreMes = "Febrero";
+            break;
+        case 3:
+            $nombreMes = "marzo";
+            break;
+        case 4:
+            $nombreMes = "abril";
+            break;
+        case 5:
+            $nombreMes = "mayo";
+            break;
+        case 6:
+            $nombreMes = "junio";
+            break;
+        case 7:
+            $nombreMes = "julio";
+            break;
+        case 8:
+            $nombreMes = "agosto";
+            break;
+        case 9:
+            $nombreMes = "septiembre";
+            break;
+        case 10:
+            $nombreMes = "octubre";
+            break;
+        case 11:
+            $nombreMes = "noviembre";
+            break;
+        case 12:
+            $nombreMes = "diciembre";
+            break;
+        default:
+            $nombreMes = 0;
+    }
+    $numeroDias = cal_days_in_month(CAL_GREGORIAN, $mes, $year);
+    $primerDiaSemana = date("N", $stampMes);
+
+    return [
+        "mes" => ucwords($nombreMes),
+        "diasSemana" => $diasSemana,
+        "numeroDias" => $numeroDias,
+        "primerDiaSemana" => $primerDiaSemana
+    ];
+}
+
+function calendario_anual($year)
+{
+    $meses = [];
+    for ($i = 1; $i <= 12; $i++) {
+        $meses[] = calendario_mensual($year, $i);
+    }
+    return $meses;
+}
+
+function pintarCalendario($datos)
+{
+
+    $diasSemana = $datos["diasSemana"];
+    $numeroDias = $datos["numeroDias"];
+    $nombreMes = $datos["mes"];
+    $primerDiaSemana = $datos["primerDiaSemana"];
+
+    $tabla = "<table border='1' style='border-collapse: collapse; text-align: center; width:100%;'>";
+    $tabla .= "<tr><th colspan='7'>$nombreMes</th></tr>";
+    $tabla .= "<tr>";
+
+    foreach ($diasSemana as $dia) {
+        $tabla .= "<th>$dia</th>";
+    }
+    $tabla .= "</tr><tr>";
+
+    for ($i = 1; $i < $primerDiaSemana; $i++) $tabla .= "<td></td>";
+
+    $diaSemana = $primerDiaSemana;
+    for ($d = 1; $d <= $numeroDias; $d++) {
+        $tabla .= "<td>$d</td>";
+        if ($diaSemana == 7) {
+            $tabla .= "</tr><tr>";
+            $diaSemana = 1;
+        } else {
+            $diaSemana++;
+        }
+    }
+    while ($diaSemana <= 7) {
+        $tabla .= "<td></td>";
+        $diaSemana++;
+    }
+
+
+
+    $tabla .= "</tr></table>";
+
+    return $tabla;
+}
+function pintarCalendarioAnual($todosLosMeses, $year)
+{
+
+    $tablaAnual = "<table border='1' style='border-collapse: collapse; width:100%;'>";
+    $columna = 0;
+    $tablaAnual .= "<tr><th colspan='4' style='text-align:center;'>" . $year . "</th></tr>";
+    $tablaAnual .= "<tr>";
+
+    foreach ($todosLosMeses as $mes) {
+        $tablaAnual .= "<td style='vertical-align: top; padding:5px;'>";
+        $tablaAnual .= pintarCalendario($mes);
+        $tablaAnual .= "</td>";
+
+        $columna++;
+        if ($columna % 4 == 0) {
+            $tablaAnual .= "</tr><tr>";
+        }
+    }
+
+
+    $tablaAnual .= "</tr></table>";
+    return $tablaAnual;
+}

@@ -1,11 +1,8 @@
 <?php
-/*2.Escribir la función calendario_mensual en calendario_ funciones.php, que reciba el año y el mes
-como argumentos, y cree una tabla
- con la representación de ese mes, como si fuera una página
-de un almanaque. 
--En la primera fla aparecerá el nombre del mes, 
--en la segunda los nombres de los días de la semana abreviados (L, M, X, J, V, S y D) y, 
--en las siguientes, los números de los días*/
+/*3. Crear un archivo llamado calendario_funciones.php que contenga una función llamada
+calendario_anual, que reciba como argumento un año y cree una tabla de 3 flas por 4
+columnas.Para rellenar el contenido de cada celda, calendario_anual deberá llamar a otra función
+llamada calendario_mensual enviándole como argumento el año y el número del mes.*/
 
 ?>
 
@@ -27,10 +24,7 @@ de un almanaque.
                     <p>Introduce el año</p>
                     <input type="number" name="year" id="year1">
                 </label>
-                <label for="mes1">
-                    <p>Introduce el mes</p>
-                    <input type="texto" name="mes" id="mes1">
-                </label>
+
 
 
             </div>

@@ -1,5 +1,7 @@
 body{
-    background-color: rebeccapurple;
+border:1px solid red;
+border-collapse: collapse;
+ text-align: center;
 }
 .fechas{
     color: yellowgreen;

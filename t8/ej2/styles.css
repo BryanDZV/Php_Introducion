@@ -1,0 +1,18 @@
+table {
+    border-collapse: collapse; /* une los bordes de las celdas */
+    width: 100%;               /* ocupa todo el ancho del contenedor */
+    margin: 20px auto;         /* centra la tabla */
+    text-align: center;        /* centra texto dentro de celdas */
+    font-family: Arial, sans-serif;
+}
+
+th, td {
+    border: 1px solid #333;   /* borde de celdas */
+    padding: 8px;              /* espacio interno */
+}
+
+th {
+    background-color: #4CAF50; /* color de cabecera */
+    color: white;
+}
+

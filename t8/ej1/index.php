@@ -6,6 +6,7 @@
 // Fecha de hoy
 $fechaHoy = date("d/m/Y", time());
 
+
 // Fecha de mañana (+1 día)
 $diaHoy = date("d");
 $timestamp = mktime(0, 0, 0, 10, $diaHoy + 1, 2025); //marca de tiempo
