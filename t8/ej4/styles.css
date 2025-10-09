@@ -1,0 +1,115 @@
+
+
+.calendario-anual {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+
+.calendario-anual td {
+    padding: 5px;
+    vertical-align: top;
+}
+
+
+.calendario-mes {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+
+.calendario-mes th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px;
+}
+.calendario-anual .anio {
+    text-align: center;
+    font-size: 24px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px;
+}
+
+
+.calendario-mes th.dia-semana {
+    background-color: #8BC34A;
+    font-weight: bold;
+}
+
+.calendario-mes td {
+    border: 1px solid #ddd;
+    padding: 5px;
+    height: 25px;
+}
+
+
+.calendario-mes td:hover {
+    background-color: #883131;
+}
+
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+main {
+    margin: 20px;
+    width: 90%;
+    max-width: 1200px;
+}
+
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Formulario */
+.formulario {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.formulario .entrada {
+    margin-bottom: 15px;
+}
+
+.formulario label p {
+    margin: 0 0 5px;
+    font-weight: bold;
+}
+
+.formulario input[type="number"] {
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.formulario input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.formulario input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+

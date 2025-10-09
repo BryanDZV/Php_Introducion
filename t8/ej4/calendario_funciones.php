@@ -63,3 +63,62 @@ function calendario_anual($year)
     }
     return $meses;
 }
+
+function pintarCalendario($datos)
+{
+    $diasSemana = $datos["diasSemana"];
+    $numeroDias = $datos["numeroDias"];
+    $nombreMes = $datos["mes"];
+    $primerDiaSemana = $datos["primerDiaSemana"];
+
+    $tabla = "<table class='calendario-mes'>";
+    $tabla .= "<tr><th colspan='7' class='mes-nombre'>$nombreMes</th></tr>";
+    $tabla .= "<tr>";
+
+    foreach ($diasSemana as $dia) {
+        $tabla .= "<th class='dia-semana'>$dia</th>";
+    }
+    $tabla .= "</tr><tr>";
+
+    for ($i = 1; $i < $primerDiaSemana; $i++) $tabla .= "<td class='dia'></td>";
+
+    $diaSemana = $primerDiaSemana;
+    for ($d = 1; $d <= $numeroDias; $d++) {
+        $tabla .= "<td class='dia'>$d</td>";
+        if ($diaSemana == 7) {
+            $tabla .= "</tr><tr>";
+            $diaSemana = 1;
+        } else {
+            $diaSemana++;
+        }
+    }
+
+
+    $tabla .= "</tr></table>";
+
+    return $tabla;
+}
+
+function pintarCalendarioAnual($todosLosMeses, $year)
+{
+    $tablaAnual = "<table class='calendario-anual'>";
+    $columna = 0;
+    $tablaAnual .= "<tr><th colspan='4' class='anio'>$year</th></tr>";
+    $tablaAnual .= "<tr>";
+
+    foreach ($todosLosMeses as $mes) {
+        $tablaAnual .= "<td class='celda-mes'>";
+        $tablaAnual .= pintarCalendario($mes);
+        $tablaAnual .= "</td>";
+
+        $columna++;
+        if ($columna % 4 == 0) {
+            $tablaAnual .= "</tr><tr>";
+        }
+    }
+
+
+
+    $tablaAnual .= "</tr></table>";
+    return $tablaAnual;
+}

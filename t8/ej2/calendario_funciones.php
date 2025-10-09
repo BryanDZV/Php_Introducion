@@ -32,7 +32,8 @@ function pintarCalendario($datos)
     $nombreMes = $datos['mes'];
     $primerDiaSemana = $datos['primerDiaSemana'];
 
-    $tabla = "<table border='1' style='border-collapse: collapse; text-align: center;'>";
+    $tabla = "<table class='calendario-mes' border='1' style='border-collapse: collapse; text-align: center;'>";
+
     $tabla .= "<tr><th colspan='7'>$nombreMes</th></tr>";
     $tabla .= "<tr>";
 

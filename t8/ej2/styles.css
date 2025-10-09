@@ -1,18 +1,29 @@
-table {
-    border-collapse: collapse; /* une los bordes de las celdas */
-    width: 100%;               /* ocupa todo el ancho del contenedor */
-    margin: 20px auto;         /* centra la tabla */
-    text-align: center;        /* centra texto dentro de celdas */
+
+
+.calendario-mes {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
     font-family: Arial, sans-serif;
+    margin-bottom: 20px;
 }
 
-th, td {
-    border: 1px solid #333;   /* borde de celdas */
-    padding: 8px;              /* espacio interno */
-}
 
-th {
-    background-color: #4CAF50; /* color de cabecera */
+.calendario-mes th {
+    background-color: #8BC34A;
     color: white;
+    font-weight: bold;
+    padding: 5px;
 }
 
+
+.calendario-mes td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    height: 25px;
+}
+
+
+.calendario-mes td:hover {
+    background-color: #e40e0e;
+}
