@@ -6,7 +6,10 @@ de un almanaque.
 -En la primera fla aparecerá el nombre del mes, 
 -en la segunda los nombres de los días de la semana abreviados (L, M, X, J, V, S y D) y, 
 -en las siguientes, los números de los días*/
-
+$error = "";
+if (isset($_GET["error"])) {
+    $error = $_GET["error"];
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,15 +24,22 @@ de un almanaque.
 <body>
     <main>
         <h1>Calendario</h1>
+        <div>
+            <p class="error">
+                <?php
+                echo !empty($error) ? $error : "";
+                ?>
+            </p>
+        </div>
         <form class="formulario" action="procesar.php" method="post">
-            <div class="entrada">
+            <div class="entradas">
                 <label for="year1">
                     <p>Introduce el año</p>
-                    <input type="number" name="year" id="year1">
+                    <input type="number" name="year" id="year1" required>
                 </label>
                 <label for="mes1">
                     <p>Introduce el mes</p>
-                    <input type="texto" name="mes" id="mes1">
+                    <input type="texto" name="mes" id="mes1" required>
                 </label>
 
 

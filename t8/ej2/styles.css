@@ -27,3 +27,10 @@
 .calendario-mes td:hover {
     background-color: #e40e0e;
 }
+
+formulario .entradas{
+    background-color: rebeccapurple;
+    display: flex;
+    justify-content: center;
+
+}

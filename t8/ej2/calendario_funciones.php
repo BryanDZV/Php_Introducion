@@ -2,9 +2,7 @@
 
 
 function calcularDias($year, $mes)
-
 {
-
     return cal_days_in_month(CAL_GREGORIAN, $mes, $year);
 }
 
@@ -55,7 +53,7 @@ function pintarCalendario($datos)
         }
     }
     while ($diaSemana <= 7) {
-        $tabla .= "<td>d</td>";
+        $tabla .= "<td></td>";
         $diaSemana++;
     }
 
@@ -64,4 +62,11 @@ function pintarCalendario($datos)
     $tabla .= "</tr></table>";
 
     return $tabla;
+}
+
+function validarMes($mes)
+{
+    if ($mes > 1 && $mes < 12) {
+        return true;
+    }
 }
