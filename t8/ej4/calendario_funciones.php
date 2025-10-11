@@ -64,7 +64,7 @@ function calendario_anual($year)
     return $meses;
 }
 
-function pintarCalendario($datos)
+function pintarCalendarioMensual($datos)
 {
     $diasSemana = $datos["diasSemana"];
     $numeroDias = $datos["numeroDias"];
@@ -99,26 +99,26 @@ function pintarCalendario($datos)
     return $tabla;
 }
 
-function pintarCalendarioAnual($todosLosMeses, $year)
+function escribir_tabla(&$mes)
 {
-    $tablaAnual = "<table class='calendario-anual'>";
-    $columna = 0;
-    $tablaAnual .= "<tr><th colspan='4' class='anio'>$year</th></tr>";
-    $tablaAnual .= "<tr>";
+    $mes = pintarCalendarioMensual($mes); // array de strings HTML
+}
 
-    foreach ($todosLosMeses as $mes) {
-        $tablaAnual .= "<td class='celda-mes'>";
-        $tablaAnual .= pintarCalendario($mes);
-        $tablaAnual .= "</td>";
+function mostrarCalendarioConArrayWalk($year)
+{
+    $meses = calendario_anual($year);
 
-        $columna++;
-        if ($columna % 4 == 0) {
-            $tablaAnual .= "</tr><tr>";
-        }
+    array_walk($meses, 'escribir_tabla');
+
+    //  3x4
+    $tabla = "<table class='calendario-anual'>";
+    $tabla .= "<tr><th colspan='4'>$year</th></tr><tr>"; //colspan cuantas columnas ocupa una fila
+
+    foreach ($meses as $indice => $mes) {
+        $tabla .= "<td>$mes</td>";
+        if (($indice + 1) % 4 == 0) $tabla .= "</tr><tr>"; //multiplos
     }
 
-
-
-    $tablaAnual .= "</tr></table>";
-    return $tablaAnual;
+    $tabla .= "</tr></table>";
+    return $tabla;
 }

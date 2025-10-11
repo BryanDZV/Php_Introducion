@@ -1,6 +1,12 @@
 <?php
 
 
+function validarMes($mes)
+{
+    if ($mes > 1 && $mes < 12) {
+        return true;
+    }
+}
 function calcularDias($year, $mes)
 {
     return cal_days_in_month(CAL_GREGORIAN, $mes, $year);
@@ -23,7 +29,7 @@ function calendario_mensual($year, $mes)
         "primerDiaSemana" => $primerDiaSemana
     ];
 }
-function pintarCalendario($datos)
+function pintarCalendarioMensual($datos)
 {
     $diasSemana = $datos['diasSemana'];
     $numeroDias = $datos['numeroDias'];
@@ -62,11 +68,4 @@ function pintarCalendario($datos)
     $tabla .= "</tr></table>";
 
     return $tabla;
-}
-
-function validarMes($mes)
-{
-    if ($mes > 1 && $mes < 12) {
-        return true;
-    }
 }

@@ -1,8 +1,7 @@
 <?php
-/*3. Crear un archivo llamado calendario_funciones.php que contenga una función llamada
-calendario_anual, que reciba como argumento un año y cree una tabla de 3 flas por 4
-columnas.Para rellenar el contenido de cada celda, calendario_anual deberá llamar a otra función
-llamada calendario_mensual enviándole como argumento el año y el número del mes.*/
+/*4 Crear una función que nos visualiza en una tabla el array que contiene los meses del año.
+Utilizar para el array_walk($meses,’escribir_tabla’).Generar la siguiente salida como un
+calendario .*/
 
 ?>
 

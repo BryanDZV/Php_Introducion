@@ -58,14 +58,14 @@
             if (validarMes($mes)) {
                 //var_dump(validarMes(($mes)));
                 $datos = calendario_mensual($year, $mes);
-                echo pintarCalendario($datos);
+                echo pintarCalendarioMensual($datos);
             } else {
 
-                $error = "mes NO VALIDO";
+                $error = "Mes No Válido";
                 header("Location:index.php?error=$error");
             }
         } else {
-            $error = "YEAR no es un numero";
+            $error = "Año No Válido";
             header("Location:index.php?error=$error");
         }
     } else {

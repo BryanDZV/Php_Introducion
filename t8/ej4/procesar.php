@@ -14,7 +14,7 @@
     if (isset($_POST["year"]) && !empty($_POST["year"])) {
         $year = $_POST["year"];
         $meses = calendario_anual($year);
-        echo pintarCalendarioAnual($meses, $year);
+        echo mostrarCalendarioConArrayWalk($year); //array_walk
     } else {
         header("Location:index.php?resultado=error");
     }

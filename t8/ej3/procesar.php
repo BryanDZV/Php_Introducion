@@ -1,10 +1,24 @@
-<?php
-require "calendario_funciones.php";
+<!DOCTYPE html>
+<html lang="es">
 
-if (isset($_POST["year"]) && !empty($_POST["year"])) {
-    $year = $_POST["year"];
-    $meses = calendario_anual($year);
-    var_dump($meses);
-} else {
-    header("Location:index.php?resultado=error");
-}
+<head>
+    <meta charset="UTF-8">
+    <title>Calendario</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <?php
+    require "calendario_funciones.php";
+
+    if (isset($_POST["year"]) && !empty($_POST["year"])) {
+        $year = $_POST["year"];
+        $meses = calendario_anual($year);
+        echo pintarCalendarioAnual($meses, $year);
+    } else {
+        header("Location:index.php?resultado=error");
+    }
+    ?>
+</body>
+
+</html>
