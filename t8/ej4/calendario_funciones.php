@@ -1,4 +1,11 @@
 <?php
+
+function validaYear($year)
+{
+    if (is_numeric($year) && $year > 1977 &&  $year < 9999) {
+        return true;
+    }
+}
 function calendario_mensual($year, $mes)
 {
     $diasSemana = ["L", "M", "X", "J", "V", "S", "D"];

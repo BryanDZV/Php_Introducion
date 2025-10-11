@@ -19,17 +19,23 @@ if (isset($_GET["error"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>calendario_</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <main>
         <h1>Calendario</h1>
         <div>
-            <p class="error">
-                <?php
-                echo !empty($error) ? $error : "";
-                ?>
-            </p>
+            <?php
+            if (!empty($error)) { ?>
+                <p class="error"><?php
+                                    echo $error
+                                    ?></p>
+            <?php
+            }
+            ?>
+
+
         </div>
         <form class="formulario" action="procesar.php" method="post">
             <div class="entradas">

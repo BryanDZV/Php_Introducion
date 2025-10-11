@@ -1,6 +1,13 @@
 <?php
 
 
+function validaYear($year)
+{
+    if (is_numeric($year) && $year > 1977 &&  $year < 9999) {
+        return true;
+    }
+}
+
 function validarMes($mes)
 {
     if ($mes > 1 && $mes < 12) {

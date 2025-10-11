@@ -2,7 +2,10 @@
 /*4 Crear una función que nos visualiza en una tabla el array que contiene los meses del año.
 Utilizar para el array_walk($meses,’escribir_tabla’).Generar la siguiente salida como un
 calendario .*/
-
+$error = "";
+if (isset($_GET["error"])) {
+    $error = $_GET["error"];
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +21,18 @@ calendario .*/
 <body>
     <main>
         <h1>Calendario</h1>
+        <div>
+            <?php
+            if (!empty($error)) { ?>
+                <p class="error"><?php
+                                    echo $error
+                                    ?></p>
+            <?php
+            }
+            ?>
+
+
+        </div>
         <form class="formulario" action="procesar.php" method="post">
             <div class="entrada">
                 <label for="year1">

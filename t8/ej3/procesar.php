@@ -13,8 +13,13 @@
 
     if (isset($_POST["year"]) && !empty($_POST["year"])) {
         $year = $_POST["year"];
-        $meses = calendario_anual($year);
-        echo pintarCalendarioAnual($meses, $year);
+        if (validaYear($year)) {
+            $meses = calendario_anual($year);
+            echo pintarCalendarioAnual($meses, $year);
+        } else {
+            $error = "Año No Válido";
+            header("Location:index.php?error=$error");
+        }
     } else {
         header("Location:index.php?resultado=error");
     }

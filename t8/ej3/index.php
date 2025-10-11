@@ -4,6 +4,10 @@ calendario_anual, que reciba como argumento un año y cree una tabla de 3 flas p
 columnas.Para rellenar el contenido de cada celda, calendario_anual deberá llamar a otra función
 llamada calendario_mensual enviándole como argumento el año y el número del mes.*/
 
+$error = "";
+if (isset($_GET["error"])) {
+    $error = $_GET["error"];
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +23,18 @@ llamada calendario_mensual enviándole como argumento el año y el número del m
 <body>
     <main>
         <h1>Calendario</h1>
+        <div>
+            <?php
+            if (!empty($error)) { ?>
+                <p class="error"><?php
+                                    echo $error
+                                    ?></p>
+            <?php
+            }
+            ?>
+
+
+        </div>
         <form class="formulario" action="procesar.php" method="post">
             <div class="entrada">
                 <label for="year1">
