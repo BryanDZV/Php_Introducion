@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baraja</title>
+  </head>
+  <body>
+    <header>
+      <h1>Baraja Española</h1>
+    </header>
+    <main>
+      <form action="procesar.php" method="post">
+        <label for="1"
+          >Selecciona el número de cartas a mostrar:
+          <input
+            type="number"
+            name="numeroCartas"
+            id="1"
+            min="1"
+            max="40"
+            required
+          />
+        </label>
+      </form>
+      <button type="submit" value="48">Mostrar Baraja</button>
+    </main>
+    <footer></footer>
+  </body>
+</html>
