@@ -1,15 +1,15 @@
 <?php
 require("./datos.php");
 
-function selecionarCartas($numeroCartas)
+function selecionarCartas($numCartas)
 {
     global  $baraja;
     $cnt = 0;
     $seleccion = [];
     for ($i = 0; $i < $baraja; $i++) {
-        if ($cnt == $numeroCartas) {
-            //var_dump($seleccion);
-            return $seleccion;
+        if ($cnt == $numCartas) {
+            //var_dump("seleccion", $seleccion);
+            return mostrarCartas($seleccion);
         } else {
             $seleccion[$cnt] = $baraja[$i];
             $cnt++;
@@ -19,13 +19,27 @@ function selecionarCartas($numeroCartas)
 
 function mostrarCartas($arraySeleccion)
 {
-    $manoSeleccion = "";
+    $manoSeleccion = "<table class='tabla-carta'>";
+    $manoSeleccion .= "<tr>";
     foreach ($arraySeleccion as $clave => $valor) {
-        // var_dump($valor);
-        foreach ($valor as $carta) {
-            //var_dump($carta);
-            $manoSeleccion .= $carta . "<br>";
+        //echo $clave;
+        $manoSeleccion .= "<td>{$valor['valor']}</td>";
+        $manoSeleccion .= "<td> <img src='{$valor['imagen']}' alt='imagen' width='100'></td>";
+
+
+
+        if (($clave + 1) % 8 == 0) {
+            $manoSeleccion .= "</tr><tr>";
         }
+        //var_dump($valor);
     };
+    $manoSeleccion .= "</tr></table>";
     return $manoSeleccion;
+}
+
+function mostrarBarajaCompleta()
+{
+    global $baraja;
+    $completa = mostrarCartas($baraja);
+    return $completa;
 }

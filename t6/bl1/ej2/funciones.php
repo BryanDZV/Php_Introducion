@@ -2,22 +2,22 @@
 function remove($buscar, $cadena)
 {
     // Eliminazsin distinguir mayúsculas)
-    $resultado = str_ireplace($buscar, "", $cadena);
+    $resultado = str_replace($buscar, "", $cadena);
     return $resultado;
 }
 
-function replace($buscar, $cadena)
+function replace($buscar, $remplazo, $cadena)
 {
 
-    $reemplazo = "***REEMPLAZADO***";
-    $resultado = str_ireplace($buscar, $reemplazo, $cadena);
+
+    $resultado = str_replace($buscar, $remplazo, $cadena);
     return $resultado;
 }
 
 function remark($buscar, $cadena)
 {
 
-    $resultadoR = str_ireplace($buscar, "<mark>$buscar</mark>", $cadena);
+    $resultadoR = str_replace($buscar, "<mark>$buscar</mark>", $cadena);
     return $resultadoR;
 }
 

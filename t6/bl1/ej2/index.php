@@ -44,8 +44,14 @@ if (isset($_GET["resultado"]) || isset($_GET["resultadoR"])) {
           class="text-area"
           name="buscar"
           cols="100"
-          rows="15"
+          rows="4"
           placeholder="Palabra a Buscar"></textarea>
+        <textarea
+          class="text-area"
+          name="remplazo"
+          cols="100"
+          rows="4"
+          placeholder="El Reemplazo"></textarea>
 
         <div class="resultado">
           <?php if (!empty($resultadoR)) echo $resultadoR  ?>

@@ -14,14 +14,17 @@ $valores = [
     11 => 'Caballo',
     12 => 'Rey'
 ];
+$imagen = [];
 
 $baraja = [];
 foreach ($palos as $palo) {
     foreach ($valores as $valor => $nombre) {
+        $imagen = "./baraja/{$valor}{$palo}.jpg";
         $baraja[] = [
             'palo' => $palo,
             'valor' => $valor,
-            'nombre' => $nombre
+            'nombre' => $nombre,
+            'imagen' => $imagen
         ];
     }
 };
