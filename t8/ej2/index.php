@@ -45,7 +45,7 @@ if (isset($_GET["error"])) {
                 </label>
                 <label for="mes1">
                     <p>Introduce el mes</p>
-                    <input type="texto" name="mes" id="mes1" required>
+                    <input type="number" name="mes" id="mes1" required>
                 </label>
 
 

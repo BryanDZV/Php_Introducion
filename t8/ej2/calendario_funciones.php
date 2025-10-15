@@ -10,9 +10,7 @@ function validaYear($year)
 
 function validarMes($mes)
 {
-    if ($mes > 1 && $mes < 12) {
-        return true;
-    }
+    return is_numeric($mes) && $mes >= 1 && $mes <= 12;
 }
 function calcularDias($year, $mes)
 {
@@ -27,7 +25,22 @@ function calendario_mensual($year, $mes)
     $nDias = calcularDias($year, $mes);
     $timestamp = mktime(0, 0, 0, $mes, 1, $year);
     //var_dump($timestamp);
-    $nombreMes = date("F", $timestamp);
+    $meses = [
+        'January' => 'enero',
+        'February' => 'febrero',
+        'March' => 'marzo',
+        'April' => 'abril',
+        'May' => 'mayo',
+        'June' => 'junio',
+        'July' => 'julio',
+        'August' => 'agosto',
+        'September' => 'septiembre',
+        'October' => 'octubre',
+        'November' => 'noviembre',
+        'December' => 'diciembre'
+    ];
+    $nombreMesIngles = date("F", $timestamp);
+    $nombreMes = ucfirst($meses[$nombreMesIngles]);
     $primerDiaSemana = date("N", $timestamp); //el numero del primer dia con N
     return [
         "mes" => $nombreMes,
