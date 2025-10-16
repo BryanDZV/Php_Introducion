@@ -14,7 +14,7 @@ $valores = [
     11 => 'Caballo',
     12 => 'Rey'
 ];
-$imagen = [];
+
 
 $baraja = [];
 foreach ($palos as $palo) {

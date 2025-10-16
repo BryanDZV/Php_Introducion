@@ -12,25 +12,39 @@
 
     <?php
     require "./funciones.php";
-    if (isset($_POST["accion"]) || isset($_POST["numCartas"])) {
+    $ordenar = "";
+
+    if (isset($_POST["accion"])  && isset($_POST["numCartas"])) {
         $accion = $_POST["accion"];
         $numCartas = $_POST["numCartas"];
+
         switch ($accion) {
             case "mostrarParcial":
-                echo selecionarCartas(($numCartas));
+                if (!validarNumeroCartas($numCartas)) {
+                    $error = "numero no valido";
+                    header("Location:index.php?error=$error");
+                } else {
+                    $parcial = selecionarCartas(($numCartas));
+                    header("Location:index.php?parcial=$parcial");
+                }
+
                 // Mostrar $num cartas
                 break;
             case "mostrarCompleta":
                 // Mostrar toda la baraja
-                echo mostrarBarajaCompleta();
+                $completa = mostrarBarajaCompleta();
+                header("Location:index.php?completa=$completa");
                 break;
             case "barajear":
+
                 // Barajar
                 break;
             case "ordenar":
                 // Ordenar
                 break;
         }
+    } else {
+        echo "error en procesar.php añ recibio datos ";
     }
     ?>
 

@@ -1,6 +1,10 @@
 <?php
 require("./datos.php");
 
+function validarNumeroCartas($numCartas)
+{
+    return is_numeric($numCartas) && $numCartas > 0;
+}
 function selecionarCartas($numCartas)
 {
     global  $baraja;
@@ -23,7 +27,7 @@ function mostrarCartas($arraySeleccion)
     $manoSeleccion .= "<tr>";
     foreach ($arraySeleccion as $clave => $valor) {
         //echo $clave;
-        $manoSeleccion .= "<td>{$valor['valor']}</td>";
+        // $manoSeleccion .= "<td>{$valor['valor']}</td>";
         $manoSeleccion .= "<td> <img src='{$valor['imagen']}' alt='imagen' width='100'></td>";
 
 
@@ -42,4 +46,13 @@ function mostrarBarajaCompleta()
     global $baraja;
     $completa = mostrarCartas($baraja);
     return $completa;
+}
+
+function barajear($accion, $numCartas)
+{
+    if ($accion === "mostrarCompleta") {
+        return shuffle($baraja);
+    } else {
+        return selecionarCartas($numCartas);
+    }
 }

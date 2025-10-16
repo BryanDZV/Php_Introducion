@@ -23,7 +23,29 @@
       </section>
       <section>
         <button type="submit" name="accion" value="barajear">Barajear</button>
-        <button type="submit" name="accion" value="ordenar">Ordenar Cartas</button>
+        <input type="checkbox" name="ordenar" value="si">Ordenar Cartas</input>
+      </section>
+
+      <section>
+        <?php
+
+        if (isset($_GET["parcial"]) && isset($_GET["error"])) {
+          $error = $_GET["error"];
+          echo $_GET["parcial"];
+        } elseif (isset($_GET["completa"])) {
+          echo $_GET["completa"];
+        }
+        ?>
+      </section>
+      <section>
+        <?php
+        if (!empty($error)) { ?>
+          <p class="error"><?php
+                            echo $error;
+                            ?></p>
+        <?php
+        }
+        ?>
       </section>
     </form>
 
