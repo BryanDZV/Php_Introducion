@@ -1,53 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
-</head>
-
-<body>
-
-    <?php
+   <?php
+    require "./datos.php"; // define $baraja
     require "./funciones.php";
-    $ordenar = "";
-
     if (isset($_POST["accion"])  && isset($_POST["numCartas"])) {
         $accion = $_POST["accion"];
         $numCartas = $_POST["numCartas"];
+        $error = "";
 
         switch ($accion) {
+            // Mostrar $num cartas
             case "mostrarParcial":
-                if (!validarNumeroCartas($numCartas)) {
-                    $error = "numero no valido";
-                    header("Location:index.php?error=$error");
-                } else {
-                    $parcial = selecionarCartas(($numCartas));
-                    header("Location:index.php?parcial=$parcial");
-                }
+                //var_dump($numCartas);
+                if (validarNumeroCartas($numCartas)) {
+                    $parcial = selecionarCartas($numCartas, $baraja);
 
-                // Mostrar $num cartas
+                    header("Location:index.php?parcial=$parcial");
+                } else {
+                    $error = "numero de Cartas debe ser mayor a 0";
+                    header("Location:index.php?error=$error");
+                }
                 break;
             case "mostrarCompleta":
                 // Mostrar toda la baraja
-                $completa = mostrarBarajaCompleta();
+                $completa = mostrarBarajaCompleta($baraja);
                 header("Location:index.php?completa=$completa");
                 break;
-            case "barajear":
+            case "shufle":
+                // Mostrar barajeada segun caso
 
-                // Barajar
+
                 break;
-            case "ordenar":
-                // Ordenar
+            default:
+                $error = "opcion no valida";
+                header("Location:index.php?error=$error");
                 break;
         }
     } else {
-        echo "error en procesar.php añ recibio datos ";
+        $error = "error en procesar.php al recibio datos en post";
+        header("Location:index.php?error=$error");
     }
+
     ?>
-
-</body>
-
-</html>

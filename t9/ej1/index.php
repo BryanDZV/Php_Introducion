@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Baraja</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -22,32 +23,27 @@
         <button type="submit" name="accion" value="mostrarCompleta">Mostrar Completa</button>
       </section>
       <section>
-        <button type="submit" name="accion" value="barajear">Barajear</button>
-        <input type="checkbox" name="ordenar" value="si">Ordenar Cartas</input>
-      </section>
-
-      <section>
-        <?php
-
-        if (isset($_GET["parcial"]) && isset($_GET["error"])) {
-          $error = $_GET["error"];
-          echo $_GET["parcial"];
-        } elseif (isset($_GET["completa"])) {
-          echo $_GET["completa"];
-        }
-        ?>
-      </section>
-      <section>
-        <?php
-        if (!empty($error)) { ?>
-          <p class="error"><?php
-                            echo $error;
-                            ?></p>
-        <?php
-        }
-        ?>
+        <button class="barajear" type="submit" name="accion" value="shufle">Barajear</button>
       </section>
     </form>
+    <section>
+      <?php
+      $parcial = "";
+      $completa = "";
+      if (isset($_GET["parcial"])) {
+        $parcial = $_GET["parcial"];
+        echo $parcial;
+      } elseif (isset($_GET["completa"])) {
+        echo $completa = $_GET["completa"];
+      } elseif (isset($_GET["error"])) {
+        $error = $_GET["error"];
+        if (!empty($error)) {
+          echo "<p class='error' >$error</p>";
+        }
+      }
+      ?>
+
+    </section>
 
   </main>
   <footer></footer>

@@ -1,13 +1,10 @@
 <?php
-require("./datos.php");
-
 function validarNumeroCartas($numCartas)
 {
     return is_numeric($numCartas) && $numCartas > 0;
 }
-function selecionarCartas($numCartas)
+function selecionarCartas($numCartas, $baraja)
 {
-    global  $baraja;
     $cnt = 0;
     $seleccion = [];
     for ($i = 0; $i < $baraja; $i++) {
@@ -41,18 +38,9 @@ function mostrarCartas($arraySeleccion)
     return $manoSeleccion;
 }
 
-function mostrarBarajaCompleta()
+function mostrarBarajaCompleta($baraja)
 {
-    global $baraja;
     $completa = mostrarCartas($baraja);
     return $completa;
-}
-
-function barajear($accion, $numCartas)
-{
-    if ($accion === "mostrarCompleta") {
-        return shuffle($baraja);
-    } else {
-        return selecionarCartas($numCartas);
-    }
-}
+};
+function barajear($arrayCaso) {};
