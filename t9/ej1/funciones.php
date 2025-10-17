@@ -5,18 +5,17 @@ function validarNumeroCartas($numCartas)
 }
 function selecionarCartas($numCartas, $baraja)
 {
-    $cnt = 0;
     $seleccion = [];
-    for ($i = 0; $i < $baraja; $i++) {
-        if ($cnt == $numCartas) {
-            //var_dump("seleccion", $seleccion);
-            return mostrarCartas($seleccion);
-        } else {
-            $seleccion[$cnt] = $baraja[$i];
-            $cnt++;
-        }
+
+    for ($i = 0; $i < count($baraja) && count($seleccion) < $numCartas; $i++) {
+        $seleccion[] = $baraja[$i];
     }
+
+    return $seleccion;
 }
+
+
+
 
 function mostrarCartas($arraySeleccion)
 {
@@ -43,4 +42,67 @@ function mostrarBarajaCompleta($baraja)
     $completa = mostrarCartas($baraja);
     return $completa;
 };
-function barajear($arrayCaso) {};
+function barajear($numCartas, $baraja)
+{
+    $copiaBaraja = $baraja;
+    shuffle($copiaBaraja); //boolean devuelve
+    // $claves = array_rand($barajeadas, $numCartas);
+
+    // if (!is_array($claves)) {
+    //     $claves = [$claves];
+    // }
+    $seleccion = array_slice($copiaBaraja, 0, $numCartas); //mas rapido
+
+
+    // $seleccion = [];
+    // foreach ($claves as $i => $clave) {
+    //     $seleccion[$i] = $baraja[$clave];
+    // }
+    return $seleccion;
+}
+
+function ordenar($ordenar, $baraja)
+{
+    $n = count($baraja);
+    //buble sort solo en este caso por estructurar mal los datos al inicio . Estrucutrar mejor para poder usar ksort , sort, asort
+    for ($i = 0; $i < $n - 1; $i++) {
+        for ($j = $i + 1; $j < $n; $j++) {
+
+            if ($baraja[$i]['palo'] > $baraja[$j]['palo']) {
+                $tmp = $baraja[$i];
+                $baraja[$i] = $baraja[$j];
+                $baraja[$j] = $tmp;
+            } elseif (
+                $baraja[$i]['palo'] == $baraja[$j]['palo'] &&
+                $baraja[$i]['valor'] > $baraja[$j]['valor']
+            ) {
+                $tmp = $baraja[$i];
+                $baraja[$i] = $baraja[$j];
+                $baraja[$j] = $tmp;
+            }
+        }
+    }
+
+    if ($ordenar === 'n') {
+        $baraja = array_reverse($baraja);
+    }
+
+    return $baraja;
+}
+
+function filtrarBarajaPorPalos($baraja, $palosSeleccionados)
+{
+    if (empty($palosSeleccionados)) {
+        return $baraja;
+    }
+
+    $resultado = [];
+
+    foreach ($baraja as $carta) {
+        if (in_array($carta['palo'], $palosSeleccionados)) {
+            $resultado[] = $carta;
+        }
+    }
+
+    return $resultado;
+}
