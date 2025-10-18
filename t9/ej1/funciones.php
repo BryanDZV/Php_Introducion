@@ -3,31 +3,33 @@ function validarNumeroCartas($numCartas)
 {
     return is_numeric($numCartas) && $numCartas > 0;
 }
-function selecionarCartas($numCartas, $baraja)
+function seleccionarCartas($numCartas, $baraja)
 {
-    //coger proporcinalmente  de todas
     $seleccion = [];
-    $totalCartas = count($baraja);
 
-    if ($numCartas >= $totalCartas) {
-        return $baraja;
+
+    $agrupadas = [];
+    foreach ($baraja as $carta) {
+        $palo = $carta['palo'];
+        $agrupadas[$palo][] = $carta;
     }
 
-    $palos = [];
-    foreach ($baraja as $mazo) {
 
-        $palos[$mazo['palo']][] = $mazo;
-    }
+    $palos = array_keys($agrupadas);
+    $totalPalos = count($palos);
+    $seleccion = [];
 
-    while (count($seleccion) < $numCartas) {
-        foreach ($palos as $palo => $cartasPalo) {
-
-            $seleccion[] = array_shift($palos[$palo]);
+    for ($i = 0; count($seleccion) < $numCartas; $i++) {
+        $paloActual = $palos[$i % $totalPalos]; //  rotación circular
+        if (!empty($agrupadas[$paloActual])) {
+            $seleccion[] = array_shift($agrupadas[$paloActual]);
         }
     }
 
+
     return $seleccion;
 }
+
 
 
 

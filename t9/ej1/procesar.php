@@ -20,6 +20,7 @@ if (isset($_POST["accion"]) && isset($_POST["numCartas"])) {
     $numCartas = $_POST["numCartas"];
 
     $barajaFiltrada = filtrarBarajaPorPalos($baraja, $palos);
+    //var_dump($barajaFiltrada);
 
     switch ($accion) {
         case "mostrarParcial":
@@ -27,7 +28,7 @@ if (isset($_POST["accion"]) && isset($_POST["numCartas"])) {
                 $error = "Número de cartas inválido";
                 header("Location:index.php?error=$error");
             } else {
-                $seleccion = selecionarCartas($numCartas, $barajaFiltrada);
+                $seleccion = seleccionarCartas($numCartas, $barajaFiltrada);
 
                 $barajaOrdenada = ordenar($ordenar, $seleccion);
                 $parcial = mostrarCartas($barajaOrdenada);
