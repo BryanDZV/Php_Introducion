@@ -26,22 +26,27 @@ if (isset($_POST["accion"]) && isset($_POST["numCartas"])) {
             if (!validarNumeroCartas($numCartas)) {
                 $error = "Número de cartas inválido";
                 header("Location:index.php?error=$error");
+            } else {
+                $seleccion = selecionarCartas($numCartas, $barajaFiltrada);
+
+                $barajaOrdenada = ordenar($ordenar, $seleccion);
+                $parcial = mostrarCartas($barajaOrdenada);
+                header("Location:index.php?parcial=$parcial&numCartas=$numCartas&ordenar=$ordenar&palos=$palosString");
             }
-            $barajaOrdenada = ordenar($ordenar, $barajaFiltrada);
-            $seleccion = selecionarCartas($numCartas, $barajaOrdenada);
-            $parcial = mostrarCartas($seleccion);
-            header("Location:index.php?parcial=$parcial&numCartas=$numCartas&ordenar=$ordenar&palos=$palosString");
+
+
             break;
 
         case "barajear":
             if (!validarNumeroCartas($numCartas)) {
                 $error = "Número de cartas inválido";
                 header("Location:index.php?error=$error");
-                exit;
+            } else {
+                $barajaBarajada = barajear($numCartas, $barajaFiltrada);
+                $barajeado = mostrarCartas($barajaBarajada);
+                header("Location:index.php?barajeado=$barajeado&numCartas=$numCartas&ordenar=$ordenar&palos=$palosString");
             }
-            $barajaBarajada = barajear($numCartas, $barajaFiltrada);
-            $barajeado = mostrarCartas($barajaBarajada);
-            header("Location:index.php?barajeado=$barajeado&numCartas=$numCartas&ordenar=$ordenar&palos=$palosString");
+
             break;
 
         case "mostrarCompleta":

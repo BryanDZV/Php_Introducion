@@ -5,14 +5,30 @@ function validarNumeroCartas($numCartas)
 }
 function selecionarCartas($numCartas, $baraja)
 {
+    //coger proporcinalmente  de todas
     $seleccion = [];
+    $totalCartas = count($baraja);
 
-    for ($i = 0; $i < count($baraja) && count($seleccion) < $numCartas; $i++) {
-        $seleccion[] = $baraja[$i];
+    if ($numCartas >= $totalCartas) {
+        return $baraja;
+    }
+
+    $palos = [];
+    foreach ($baraja as $mazo) {
+
+        $palos[$mazo['palo']][] = $mazo;
+    }
+
+    while (count($seleccion) < $numCartas) {
+        foreach ($palos as $palo => $cartasPalo) {
+
+            $seleccion[] = array_shift($palos[$palo]);
+        }
     }
 
     return $seleccion;
 }
+
 
 
 
@@ -64,7 +80,7 @@ function barajear($numCartas, $baraja)
 function ordenar($ordenar, $baraja)
 {
     $n = count($baraja);
-    //buble sort solo en este caso por estructurar mal los datos al inicio . Estrucutrar mejor para poder usar ksort , sort, asort
+    //buble sort cuando estructurares mal los datos al inicio . Estrucutrar mejor para poder usar ksort , sort, asort
     for ($i = 0; $i < $n - 1; $i++) {
         for ($j = $i + 1; $j < $n; $j++) {
 
