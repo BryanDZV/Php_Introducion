@@ -1,11 +1,6 @@
 
 
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 
 body {
@@ -14,11 +9,15 @@ body {
   color: #333;
   padding: 2rem;
 }
+main{
+  display: flex;
+justify-content: center;
+}
 
 
 header {
   text-align: center;
-  margin-bottom: 2rem;
+ 
 }
 
 header h1 {
@@ -31,7 +30,6 @@ form {
   background: #fff;
   padding: 2rem;
   border-radius: 8px;
- 
   display: flex;
   flex-direction: column;
  gap: 1.5rem;  /*espacio entre los elementos cuadno tienes flex o grid*/
@@ -86,9 +84,7 @@ button.barajear:hover {
 
 
 main > section {
-  margin-top: 2rem;
   background: #fff;
-  padding: 1rem;
   border-radius: 6px;
 }
 

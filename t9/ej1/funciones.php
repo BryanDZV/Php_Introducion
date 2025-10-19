@@ -6,26 +6,32 @@ function validarNumeroCartas($numCartas)
 function seleccionarCartas($numCartas, $baraja)
 {
     $seleccion = [];
+    $totalCartas = count($baraja);
 
+    if ($numCartas >= $totalCartas) {
+        return $baraja;
+    }
 
-    $agrupadas = [];
+    // Agrupar cartas por palo
+    $grupos = [];
     foreach ($baraja as $carta) {
         $palo = $carta['palo'];
-        $agrupadas[$palo][] = $carta;
+        $grupos[$palo][] = $carta;
     }
 
+    // Ciclo circular
+    $palos = array_keys($grupos);
+    $indicePalo = 0;
 
-    $palos = array_keys($agrupadas);
-    $totalPalos = count($palos);
-    $seleccion = [];
+    while (count($seleccion) < $numCartas) {
+        $paloActual = $palos[$indicePalo % count($palos)];
 
-    for ($i = 0; count($seleccion) < $numCartas; $i++) {
-        $paloActual = $palos[$i % $totalPalos]; //  rotación circular
-        if (!empty($agrupadas[$paloActual])) {
-            $seleccion[] = array_shift($agrupadas[$paloActual]);
+        if (!empty($grupos[$paloActual])) {
+            $seleccion[] = array_shift($grupos[$paloActual]);
         }
-    }
 
+        $indicePalo++;
+    }
 
     return $seleccion;
 }
