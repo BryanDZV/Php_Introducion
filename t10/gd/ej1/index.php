@@ -1,26 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Captcha</title>
-</head>
 
-<body>
-    <header>
-        <h1>Es un captcha</h1>
-    </header>
-    <main>
-        <form action="captcha.php" method="post">
+$imagen = imagecreatefromjpeg("./img/fondo.jpeg");
 
-            <input type="text" name="dato" id="">
-            <input type="submit" value="Enviar">
 
-        </form>
 
-    </main>
+$blanco = imagecolorallocate($imagen, 255, 255, 255);
 
-</body>
+$colorRandom = imagecolorallocate($imagen, rand(0, 255), rand(0, 255), rand(0, 255));
 
-</html>
+
+$fuente = "./fuentes/OpenSans-Regular.ttf";
+
+
+$texto = "juanfe";
+$array = str_split($texto);
+
+for ($i = 0; $i < count($array); $i++) {
+    $c = $array[$i];
+    $color = rand(0, 255);
+}
+$color =
+
+    imagefttext(
+        $imagen,
+        20,
+        0,
+        50,
+        50,
+        $colorRandom,
+        $fuente,
+        $c
+    );
+
+
+
+
+
+header("Content-type: image/jpeg");
+
+
+imagejpeg($imagen);
+
+
+imagedestroy($imagen);
