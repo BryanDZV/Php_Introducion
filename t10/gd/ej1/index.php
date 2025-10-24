@@ -15,10 +15,9 @@ $fuente = "./fuentes/OpenSans-Regular.ttf";
 
 $texto = "juanfe";
 $array = str_split($texto);
-
+$c = [];
 for ($i = 0; $i < count($array); $i++) {
     $c = $array[$i];
-    $color = rand(0, 255);
 }
 $color =
 
@@ -28,7 +27,7 @@ $color =
         0,
         50,
         50,
-        $colorRandom,
+        rand(0, 255),
         $fuente,
         $c
     );
