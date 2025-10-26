@@ -15,22 +15,16 @@ $fuente = "./fuentes/OpenSans-Regular.ttf";
 
 $texto = "juanfe";
 $array = str_split($texto);
-$c = [];
-for ($i = 0; $i < count($array); $i++) {
-    $c = $array[$i];
-}
-$color =
-
-    imagefttext(
-        $imagen,
-        20,
-        0,
-        50,
-        50,
-        rand(0, 255),
-        $fuente,
-        $c
-    );
+imagefttext(
+    $imagen,
+    20,
+    0,
+    50,
+    50,
+    mt_rand(0, 255),
+    $fuente,
+    $texto
+);
 
 
 
