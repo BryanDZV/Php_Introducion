@@ -1,0 +1,30 @@
+.body {
+  display: flex;
+  justify-content: center;
+}
+
+.tabla {
+  max-width: max-content;
+  border: 1px solid rgb(189, 13, 13);
+  border-collapse: collapse;
+}
+
+.celda {
+  border: 1px solid blue;
+}
+
+.form-contetn {
+  justify-content: center;
+  display: flex;
+}
+
+.tabla-content {
+  display: flex;
+  justify-content: center;
+}
+main {
+  gap: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
