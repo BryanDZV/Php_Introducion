@@ -15,29 +15,33 @@ if (isset($_GET["tabla"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabla</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
     <main>
-        <h1>Tabala</h1>
+        <section class="form-content">
+            <h1>Tabala</h1>
 
-        <form action="procesar.php" method="post">
-            <p>numero de columnas:</p>
-            <input type="text" name="columna" id="c" required>
-            <p>numero de filas:</p>
-            <input type="text" name="filas" id="f" required>
+            <form action="procesar.php" method="post">
+                <p>numero de columnas:</p>
+                <input type="text" name="columna" id="c" required>
+                <p>numero de filas:</p>
+                <input type="text" name="filas" id="f" required>
 
-            <input type="submit" value="Enviar">
+                <input type="submit" value="Enviar">
 
-        </form>
-        <div>
+            </form>
+        </section>
+
+        <section class="tabla-content">
             <?php
             if (!empty($tabla)) {
                 echo $tabla;
             };
 
             ?>
-        </div>
+        </section>
 
 
     </main>
