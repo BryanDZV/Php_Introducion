@@ -1,3 +1,9 @@
+<?php
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -34,55 +40,9 @@
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" required />
         </p>
-        <p>
-            <label for="foto">Foto:</label>
-            <input type="file" name="foto" id="foto" required />
-        </p>
 
 
-        <h2>Formación académica</h2>
-        <p>
-            <label for="formacion">Escribe tu formación:</label><br>
-            <textarea name="formacion" id="formacion" rows="4" cols="40" required></textarea>
-        </p>
 
-
-        <h2>Experiencia laboral</h2>
-        <p>
-            <label for="experiencia">Describe tu experiencia:</label><br>
-            <textarea name="experiencia" id="experiencia" rows="4" cols="40" required></textarea>
-        </p>
-
-
-        <h2>Idiomas</h2>
-        <p>
-            <input type="checkbox" name="idioma[]" value="Inglés" id="i1">
-            <label for="i1">Inglés</label>
-            <input type="checkbox" name="idioma[]" value="Francés" id="i2">
-            <label for="i2">Francés</label>
-            <input type="checkbox" name="idioma[]" value="Alemán" id="i3">
-            <label for="i3">Alemán</label>
-        </p>
-
-
-        <h2>Sexo</h2>
-        <p>
-            <input type="radio" name="sexo" id="fem" value="Femenino" required>
-            <label for="fem">Femenino</label>
-            <input type="radio" name="sexo" id="masc" value="Masculino" required>
-            <label for="masc">Masculino</label>
-        </p>
-
-
-        <h2>Aficiones</h2>
-        <p>
-            <label for="6">Selecciona tus aficiones: <em>CTRL + CLICK IZQ</em> para mas de uno</label><br>
-            <select multiple name="aficiones[]" id="6" required size="5">
-                <option value="nadar">Nadar</option>
-                <option value="comer">Comer</option>
-                <option value="dormir">Dormir</option>
-            </select>
-        </p>
 
         <p>
             <input type="submit" value="Generar CV" />

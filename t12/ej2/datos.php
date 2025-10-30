@@ -6,18 +6,7 @@ $datosPersonales = [
     "fecha",
     "telefono",
     "email",
-    "foto",
 ];
-
-$formacionAcademica = [
-    "formacion"
-];
-
-$experienciaLaboral = [
-    "experiencia"
-
-];
-
 
 
 $idiomas = [
