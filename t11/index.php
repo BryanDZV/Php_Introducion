@@ -28,6 +28,13 @@ if (isset($_GET["tabla"])) {
                 <input type="text" name="columna" id="c" required>
                 <p>numero de filas:</p>
                 <input type="text" name="filas" id="f" required>
+                <h2>Opcionales:</h2>
+                <p>ancho:</p>
+                <input type="text" name="ancho" id="a">
+                <p>color:</p>
+                <input type="text" name="color" id="colr">
+                <p>borde:</p>
+                <input type="text" name="borde" id="borde">
 
                 <input type="submit" value="Enviar">
 

@@ -1,3 +1,4 @@
 <?php
-setcookie("fecha", false, time() + 3600);
+setcookie('Fecha', FALSE, time() + 3600);
+
 var_dump($_COOKIE);
