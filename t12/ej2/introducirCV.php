@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario Currículum</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <h1>Formulario de Currículum</h1>
+
+    <form action="cv.php" method="post" enctype="multipart/form-data">
+
+        <h2>Datos personales</h2>
+        <p>
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" name="nombre" id="nombre" required />
+        </p>
+        <p>
+            <label for="direccion">Dirección:</label>
+            <input type="text" name="direccion" id="direccion" required />
+        </p>
+        <p>
+            <label for="fecha">Fecha de nacimiento:</label>
+            <input type="date" name="fecha" id="fecha" required />
+        </p>
+        <p>
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" name="telefono" id="telefono" required />
+        </p>
+        <p>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required />
+        </p>
+        <p>
+            <label for="foto">Foto:</label>
+            <input type="file" name="foto" id="foto" required />
+        </p>
+
+
+        <h2>Formación académica</h2>
+        <p>
+            <label for="formacion">Escribe tu formación:</label><br>
+            <textarea name="formacion" id="formacion" rows="4" cols="40" required></textarea>
+        </p>
+
+
+        <h2>Experiencia laboral</h2>
+        <p>
+            <label for="experiencia">Describe tu experiencia:</label><br>
+            <textarea name="experiencia" id="experiencia" rows="4" cols="40" required></textarea>
+        </p>
+
+
+        <h2>Idiomas</h2>
+        <p>
+            <input type="checkbox" name="idioma[]" value="Inglés" id="i1">
+            <label for="i1">Inglés</label>
+            <input type="checkbox" name="idioma[]" value="Francés" id="i2">
+            <label for="i2">Francés</label>
+            <input type="checkbox" name="idioma[]" value="Alemán" id="i3">
+            <label for="i3">Alemán</label>
+        </p>
+
+
+        <h2>Sexo</h2>
+        <p>
+            <input type="radio" name="sexo" id="fem" value="Femenino" required>
+            <label for="fem">Femenino</label>
+            <input type="radio" name="sexo" id="masc" value="Masculino" required>
+            <label for="masc">Masculino</label>
+        </p>
+
+
+        <h2>Aficiones</h2>
+        <p>
+            <label for="6">Selecciona tus aficiones: <em>CTRL + CLICK IZQ</em> para mas de uno</label><br>
+            <select multiple name="aficiones[]" id="6" required size="5">
+                <option value="nadar">Nadar</option>
+                <option value="comer">Comer</option>
+                <option value="dormir">Dormir</option>
+            </select>
+        </p>
+
+        <p>
+            <input type="submit" value="Generar CV" />
+        </p>
+    </form>
+</body>
+
+</html>
