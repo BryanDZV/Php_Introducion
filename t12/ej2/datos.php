@@ -1,19 +1,13 @@
 <?php
 
-$datosPersonales = [
-    "nombre",
-    "direccion",
-    "fecha",
-    "telefono",
-    "email",
-];
-
 
 $idiomas = [
     $español = [
-        "nombre completo" => "nombre ",
-        "edad" => "edad",
-        "ciudad" => "Madrid"
+        "nombre" => "nombre",
+        "direccion",
+        "fecha",
+        "telefono",
+        "email",
     ],
     $ingles = [
         "nombre" => "nombre",
