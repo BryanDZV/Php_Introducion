@@ -12,9 +12,20 @@
     Cuando las cookies existen no debe pedirnos  la configuración de idioma y color, por tanto solo nos presenta el formulario para introducir el cv  y no el de petición de preferencias.
     
     Las palabras de los distintos idiomas estarán en un único json.  */
-require "./variables.php";
+require __DIR__ . "/variables.php";
+
 if (isset($_GET["error"])) {
     $error = $_GET["error"];
+}
+
+//lectura de coockie
+
+if ($_COOKIE["fondo_actual"] && $_COOKIE["idioma_actual"]) {
+    $fondo_actual = $_COOKIE["fondo_actual"];
+    $idioma_actual = $_COOKIE["idioma_actual"];
+    header("Location:introducirCV.php");
+} else {
+    $error = "no hay cokkies";
 }
 
 ?>
@@ -48,9 +59,9 @@ if (isset($_GET["error"])) {
                 </div>
                 <div class="contenedor-idioma">
                     <p>Selecciona idioma del CV:</p>
-                    <input type="radio" name="idioma" id="1" value="Español">Español
-                    <input type="radio" name="idioma" id="2" value="Ingles">Ingles
-                    <input type="radio" name="idioma" id="3" value="Aleman">Aleman
+                    <input type="radio" name="idioma" id="1" value="es">Español
+                    <input type="radio" name="idioma" id="2" value="en">Ingles
+                    <input type="radio" name="idioma" id="3" value="de">Aleman
 
                 </div>
                 <button type="submit">Empezar Cv</button>

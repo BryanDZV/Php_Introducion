@@ -1,6 +1,9 @@
 <?php
-function set_cookie($idioma, $fondo) {}
+require "./datos.php";
 
-function empezarCV($idioma, $fondo) {}
 
-function traducirCv($idioma) {}
+function obtenerDatos($idioma_actual)
+{
+    global  $traducciones;
+    return $traducciones[$idioma_actual];
+};
