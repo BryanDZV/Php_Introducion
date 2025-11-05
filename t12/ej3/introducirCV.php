@@ -80,7 +80,12 @@ if ($_COOKIE["fondo_actual"] && $_COOKIE["idioma_actual"]) {
         <p>
             <input type="submit" value="Generar CV" />
         </p>
+
     </form>
+    <form action="procesar.php" method="post">
+        <button type="submit" name="borrar_cookies" value="1">Borrar Cookies</button>
+    </form>
+
 </body>
 
 </html>

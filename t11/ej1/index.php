@@ -4,12 +4,11 @@
 crear_tabla(4,6,'width: 60px;','height: 40px;','background: pink;','border: 3px dashed blue;');*/
 $tabla = "";
 if (isset($_GET["tabla"])) {
-    $tabla = $_GET["tabla"];
+    $tabla = urldecode($_GET["tabla"]); //  decodifica el HTML recibido
 }
-
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -21,23 +20,26 @@ if (isset($_GET["tabla"])) {
 <body>
     <main>
         <section class="form-content">
-            <h1>Tabala</h1>
+            <h1>Tabla</h1>
 
             <form action="procesar.php" method="post">
-                <p>numero de columnas:</p>
-                <input type="text" name="columna" id="c" required>
-                <p>numero de filas:</p>
-                <input type="text" name="filas" id="f" required>
+                <p>Número de columnas:</p>
+                <input type="text" name="columna" required>
+
+                <p>Número de filas:</p>
+                <input type="text" name="filas" required>
+
                 <h2>Opcionales:</h2>
-                <p>ancho:</p>
-                <input type="text" name="ancho" id="a">
-                <p>color:</p>
-                <input type="text" name="color" id="colr">
-                <p>borde:</p>
-                <input type="text" name="borde" id="borde">
+                <p>Ancho (ej: 60px o auto):</p>
+                <input type="text" name="ancho">
+
+                <p>Color (ej: pink o #ff0000):</p>
+                <input type="text" name="color">
+
+                <p>Borde (ej: 3px solid blue):</p>
+                <input type="text" name="borde">
 
                 <input type="submit" value="Enviar">
-
             </form>
         </section>
 
@@ -45,14 +47,10 @@ if (isset($_GET["tabla"])) {
             <?php
             if (!empty($tabla)) {
                 echo $tabla;
-            };
-
+            }
             ?>
         </section>
-
-
     </main>
-
 </body>
 
 </html>

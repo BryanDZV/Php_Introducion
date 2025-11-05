@@ -25,7 +25,6 @@ if (isset($_COOKIE["fondo_actual"]) && isset($_COOKIE["idioma_actual"])) {
     $fondo_actual = $_COOKIE["fondo_actual"];
     $idioma_actual = $_COOKIE["idioma_actual"];
     header("Location:introducirCV.php");
-    exit;
 } else {
     $error = "no hay cookies";
 }
@@ -64,7 +63,7 @@ if (isset($_COOKIE["fondo_actual"]) && isset($_COOKIE["idioma_actual"])) {
                     <p>Selecciona idioma del CV:</p>
                     <input type="radio" name="idioma" id="1" value="es">Español
                     <input type="radio" name="idioma" id="2" value="en">Ingles
-                    <input type="radio" name="idioma" id="3" value="de">Aleman
+                    <input type="radio" name="idioma" id="3" value="de">Francés
 
                 </div>
                 <button type="submit">Empezar Cv</button>
