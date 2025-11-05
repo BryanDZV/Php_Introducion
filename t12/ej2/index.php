@@ -19,7 +19,7 @@ if (isset($_GET["error"])) {
 }
 
 //lectura de coockie
-
+$fondo_actual = "";
 if ($_COOKIE["fondo_actual"] && $_COOKIE["idioma_actual"]) {
     $fondo_actual = $_COOKIE["fondo_actual"];
     $idioma_actual = $_COOKIE["idioma_actual"];
