@@ -1,15 +1,18 @@
 <?php
 require "./funciones.php";
 
-if (!isset($_COOKIE["idioma_actual"])) {
+if (!isset($_COOKIE["config"])) {
     header("Location: index.php");
+    exit;
 }
 
-$idioma = $_COOKIE["idioma_actual"];
+$config = json_decode($_COOKIE["config"], true);
+$idioma = $config["idioma"];
 $traduccion = obtenerDatos($idioma);
 
 if (!isset($_POST["nombre"])) {
-    header("Location: introducirCV.php");
+    header("Location: curriculum.php");
+    exit;
 }
 
 $nombre = htmlspecialchars($_POST["nombre"]);
@@ -23,6 +26,7 @@ $sexo = htmlspecialchars($_POST["sexo"]);
 $idiomas = isset($_POST["idioma"]) ? implode(", ", $_POST["idioma"]) : "Ninguno";
 $aficiones = isset($_POST["aficiones"]) ? implode(", ", $_POST["aficiones"]) : "Ninguna";
 
+// Manejo de foto
 $foto = "";
 if (isset($_FILES["foto"]) && $_FILES["foto"]["error"] === 0) {
     $nombreFoto = basename($_FILES["foto"]["name"]);
@@ -41,7 +45,7 @@ if (isset($_FILES["foto"]) && $_FILES["foto"]["error"] === 0) {
     <link rel="stylesheet" href="estilos.css">
 </head>
 
-<body class="cv">
+<body>
     <div class="contenedor cv-card">
         <h1><?= $traduccion["titulo"] ?> - <?= $nombre ?></h1>
         <?php if ($foto): ?><img src="<?= $foto ?>" alt="Foto de <?= $nombre ?>" class="foto-cv"><?php endif; ?>
@@ -53,16 +57,16 @@ if (isset($_FILES["foto"]) && $_FILES["foto"]["error"] === 0) {
         <p><strong><?= $traduccion["email"] ?>:</strong> <?= $email ?></p>
         <p><strong>Sexo:</strong> <?= $sexo ?></p>
 
-        <h2>Formación académica</h2>
+        <h2><?= $traduccion["formacion_titulo"] ?></h2>
         <p><?= $formacion ?></p>
 
-        <h2>Experiencia laboral</h2>
+        <h2><?= $traduccion["experiencia_titulo"] ?></h2>
         <p><?= $experiencia ?></p>
 
-        <h2>Idiomas</h2>
+        <h2><?= $traduccion["idiomas_titulo"] ?></h2>
         <p><?= $idiomas ?></p>
 
-        <h2>Aficiones</h2>
+        <h2><?= $traduccion["aficiones_titulo"] ?></h2>
         <p><?= $aficiones ?></p>
 
         <a href="curriculum.php" class="boton">Volver</a>

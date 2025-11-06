@@ -1,0 +1,50 @@
+{
+  "es": {
+    "titulo": "Formulario de Currículum",
+    "datos": "Datos Personales",
+    "nombre": "Nombre Completo",
+    "direccion": "Dirección",
+    "fecha": "Fecha de nacimiento",
+    "telefono": "Teléfono",
+    "email": "Correo electrónico",
+    "foto": "Fotografía",
+    "formacion": "Formación Académica",
+    "experiencia": "Experiencia Laboral",
+    "idiomas": "Idiomas",
+    "sexo": "Sexo",
+    "aficiones": "Aficiones",
+    "generar": "Generar CV"
+  },
+  "en": {
+    "titulo": "Resume Form",
+    "datos": "Personal Data",
+    "nombre": "Full Name",
+    "direccion": "Address",
+    "fecha": "Date of Birth",
+    "telefono": "Phone",
+    "email": "Email",
+    "foto": "Photo",
+    "formacion": "Academic Background",
+    "experiencia": "Work Experience",
+    "idiomas": "Languages",
+    "sexo": "Gender",
+    "aficiones": "Hobbies",
+    "generar": "Generate CV"
+  },
+  "fr": {
+    "titulo": "Formulaire de CV",
+    "datos": "Données Personnelles",
+    "nombre": "Nom Complet",
+    "direccion": "Adresse",
+    "fecha": "Date de Naissance",
+    "telefono": "Téléphone",
+    "email": "Email",
+    "foto": "Photographie",
+    "formacion": "Formation Académique",
+    "experiencia": "Expérience Professionnelle",
+    "idiomas": "Langues",
+    "sexo": "Sexe",
+    "aficiones": "Loisirs",
+    "generar": "Générer CV"
+  }
+}

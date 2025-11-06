@@ -1,0 +1,28 @@
+<?php
+require "./variables.php";
+require "./funciones.php";
+
+$datos = [
+    "nombre" => $_POST["nombre"] ?? "",
+    "apellidos" => $_POST["apellidos"] ?? "",
+    "edad" => $_POST["edad"] ?? "",
+    "dni" => $_POST["dni"] ?? "",
+    "email" => $_POST["email"] ?? "",
+    "pais" => $_POST["pais"] ?? "",
+    "estudios" => $_POST["estudios"] ?? "",
+    "idiomas" => $_POST["idiomas"] ?? []
+];
+
+$_SESSION["form"] = $datos;
+
+$errores = validarRegistro($datos);
+
+if (!empty($errores)) {
+    $_SESSION["errores"] = $errores;
+    header("Location: index.php");
+    exit;
+}
+
+$_SESSION["usuario"] = $datos["nombre"];
+header("Location: bienvenida.php");
+exit;

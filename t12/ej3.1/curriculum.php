@@ -2,101 +2,96 @@
 require "./funciones.php";
 require "./variables.php";
 
-/* Lectura de cookies */
-if (!isset($_COOKIE["fondo_actual"]) && !isset($_COOKIE["idioma_actual"])) {
+// 1️⃣ Comprobar que existe la cookie de configuración
+if (!isset($_COOKIE["config"])) {
     header("Location:index.php");
-} else {
-    $fondo_actual = $_COOKIE["fondo_actual"];
-    $idioma_actual = $_COOKIE["idioma_actual"];
-    $traduccionActual = obtenerDatos($idioma_actual);
+    exit;
 }
+
+// 2️⃣ Decodificar la cookie JSON
+$config = json_decode($_COOKIE["config"], true);
+$fondo_actual = $config["fondo"];
+$idioma_actual = $config["idioma"];
+$traduccionActual = obtenerDatos($idioma_actual);
 ?>
 
 <!DOCTYPE html>
-<html lang="<?php echo $idioma_actual; ?>">
+<html lang="<?= $idioma_actual ?>">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?php echo $traduccionActual["titulo"]; ?></title>
+    <meta charset="UTF-8">
+    <title><?= $traduccionActual["titulo"] ?></title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 
-<body style="background-color:<?php echo $fondo_actual; ?>">
+<body style="background-color:<?= $fondo_actual ?>">
 
-    <h1><?php echo $traduccionActual["titulo"]; ?></h1>
+    <h1><?= $traduccionActual["titulo"] ?></h1>
 
     <form action="cv.php" method="post" enctype="multipart/form-data">
 
-        <h2><?php echo $traduccionActual["datos"]; ?></h2>
+        <h2><?= $traduccionActual["datos"] ?></h2>
         <p>
-            <label for="nombre"><?php echo $traduccionActual["nombre"]; ?></label>
-            <input type="text" name="nombre" id="nombre" required />
+            <label><?= $traduccionActual["nombre"] ?></label>
+            <input type="text" name="nombre" required>
         </p>
         <p>
-            <label for="direccion"><?php echo $traduccionActual["direccion"]; ?></label>
-            <input type="text" name="direccion" id="direccion" required />
+            <label><?= $traduccionActual["direccion"] ?></label>
+            <input type="text" name="direccion" required>
         </p>
         <p>
-            <label for="fecha"><?php echo $traduccionActual["fecha"]; ?></label>
-            <input type="date" name="fecha" id="fecha" required />
+            <label><?= $traduccionActual["fecha"] ?></label>
+            <input type="date" name="fecha" required>
         </p>
         <p>
-            <label for="telefono"><?php echo $traduccionActual["telefono"]; ?></label>
-            <input type="tel" name="telefono" id="telefono" required />
+            <label><?= $traduccionActual["telefono"] ?></label>
+            <input type="tel" name="telefono" required>
         </p>
         <p>
-            <label for="email"><?php echo $traduccionActual["email"]; ?></label>
-            <input type="email" name="email" id="email" required />
+            <label><?= $traduccionActual["email"] ?></label>
+            <input type="email" name="email" required>
         </p>
         <p>
-            <label for="foto"><?php echo $traduccionActual["foto"]; ?></label>
-            <input type="file" name="foto" id="foto" required />
-        </p>
-
-        <h2><?php echo $traduccionActual["formacion_titulo"]; ?></h2>
-        <p>
-            <label for="formacion"><?php echo $traduccionActual["formacion_texto"]; ?></label><br>
-            <textarea name="formacion" id="formacion" rows="4" cols="40" required></textarea>
+            <label><?= $traduccionActual["foto"] ?></label>
+            <input type="file" name="foto" required>
         </p>
 
-        <h2><?php echo $traduccionActual["experiencia_titulo"]; ?></h2>
+        <h2><?= $traduccionActual["formacion_titulo"] ?></h2>
         <p>
-            <label for="experiencia"><?php echo $traduccionActual["experiencia_texto"]; ?></label><br>
-            <textarea name="experiencia" id="experiencia" rows="4" cols="40" required></textarea>
+            <label><?= $traduccionActual["formacion_texto"] ?></label><br>
+            <textarea name="formacion" rows="4" cols="40" required></textarea>
         </p>
 
-        <h2><?php echo $traduccionActual["idiomas_titulo"]; ?></h2>
+        <h2><?= $traduccionActual["experiencia_titulo"] ?></h2>
         <p>
-            <input type="checkbox" name="idioma[]" value="<?php echo $traduccionActual["idioma_ingles"]; ?>" id="i1">
-            <label for="i1"><?php echo $traduccionActual["idioma_ingles"]; ?></label>
-            <input type="checkbox" name="idioma[]" value="<?php echo $traduccionActual["idioma_frances"]; ?>" id="i2">
-            <label for="i2"><?php echo $traduccionActual["idioma_frances"]; ?></label>
-            <input type="checkbox" name="idioma[]" value="<?php echo $traduccionActual["idioma_aleman"]; ?>" id="i3">
-            <label for="i3"><?php echo $traduccionActual["idioma_aleman"]; ?></label>
+            <label><?= $traduccionActual["experiencia_texto"] ?></label><br>
+            <textarea name="experiencia" rows="4" cols="40" required></textarea>
         </p>
 
-        <h2><?php echo $traduccionActual["sexo_titulo"]; ?></h2>
+        <h2><?= $traduccionActual["idiomas_titulo"] ?></h2>
         <p>
-            <input type="radio" name="sexo" id="fem" value="<?php echo $traduccionActual["sexo_femenino"]; ?>" required>
-            <label for="fem"><?php echo $traduccionActual["sexo_femenino"]; ?></label>
-            <input type="radio" name="sexo" id="masc" value="<?php echo $traduccionActual["sexo_masculino"]; ?>" required>
-            <label for="masc"><?php echo $traduccionActual["sexo_masculino"]; ?></label>
+            <input type="checkbox" name="idioma[]" value="<?= $traduccionActual["idioma_ingles"] ?>"> <?= $traduccionActual["idioma_ingles"] ?>
+            <input type="checkbox" name="idioma[]" value="<?= $traduccionActual["idioma_frances"] ?>"> <?= $traduccionActual["idioma_frances"] ?>
+            <input type="checkbox" name="idioma[]" value="<?= $traduccionActual["idioma_aleman"] ?>"> <?= $traduccionActual["idioma_aleman"] ?>
         </p>
 
-        <h2><?php echo $traduccionActual["aficiones_titulo"]; ?></h2>
+        <h2><?= $traduccionActual["sexo_titulo"] ?></h2>
         <p>
-            <label for="6"><?php echo $traduccionActual["aficiones_texto"]; ?></label><br>
-            <select multiple name="aficiones[]" id="6" required size="5">
-                <option value="<?php echo $traduccionActual["aficiones_op1"]; ?>"><?php echo $traduccionActual["aficiones_op1"]; ?></option>
-                <option value="<?php echo $traduccionActual["aficiones_op2"]; ?>"><?php echo $traduccionActual["aficiones_op2"]; ?></option>
-                <option value="<?php echo $traduccionActual["aficiones_op3"]; ?>"><?php echo $traduccionActual["aficiones_op3"]; ?></option>
+            <input type="radio" name="sexo" value="<?= $traduccionActual["sexo_femenino"] ?>" required> <?= $traduccionActual["sexo_femenino"] ?>
+            <input type="radio" name="sexo" value="<?= $traduccionActual["sexo_masculino"] ?>" required> <?= $traduccionActual["sexo_masculino"] ?>
+        </p>
+
+        <h2><?= $traduccionActual["aficiones_titulo"] ?></h2>
+        <p>
+            <label><?= $traduccionActual["aficiones_texto"] ?></label><br>
+            <select multiple name="aficiones[]" required size="5">
+                <option value="<?= $traduccionActual["aficiones_op1"] ?>"><?= $traduccionActual["aficiones_op1"] ?></option>
+                <option value="<?= $traduccionActual["aficiones_op2"] ?>"><?= $traduccionActual["aficiones_op2"] ?></option>
+                <option value="<?= $traduccionActual["aficiones_op3"] ?>"><?= $traduccionActual["aficiones_op3"] ?></option>
             </select>
         </p>
 
-        <p>
-            <input type="submit" value="<?php echo $traduccionActual["boton"]; ?>" />
-        </p>
+        <p><input type="submit" value="<?= $traduccionActual["boton"] ?>"></p>
     </form>
 
     <form action="procesar.php" method="post">
