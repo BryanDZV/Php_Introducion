@@ -2,16 +2,13 @@
 /* Configuración inicial */
 require "variables.php";
 
-if (isset($_GET["error"])) {
-    $error = $_GET["error"];
-}
-
 /* Lectura de cookies */
 if (isset($_COOKIE["fondo_actual"]) && isset($_COOKIE["idioma_actual"])) {
     $fondo_actual = $_COOKIE["fondo_actual"];
     $idioma_actual = $_COOKIE["idioma_actual"];
-    header("Location:introducirCV.php");
-    exit;
+    header("Location:curriculum.php");
+} elseif (isset($_GET["error"])) {
+    $error = $_GET["error"];
 } else {
     $error = "No hay cookies guardadas. Configura tus preferencias.";
 }

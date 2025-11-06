@@ -3,7 +3,6 @@ require "./funciones.php";
 
 if (!isset($_COOKIE["idioma_actual"])) {
     header("Location: index.php");
-    exit;
 }
 
 $idioma = $_COOKIE["idioma_actual"];
@@ -11,7 +10,6 @@ $traduccion = obtenerDatos($idioma);
 
 if (!isset($_POST["nombre"])) {
     header("Location: introducirCV.php");
-    exit;
 }
 
 $nombre = htmlspecialchars($_POST["nombre"]);

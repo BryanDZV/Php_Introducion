@@ -5,8 +5,8 @@ if (isset($_POST["fondo"]) && isset($_POST["idioma"])) {
     $fondo_actual = $_POST["fondo"];
     $idioma_actual = $_POST["idioma"];
 
-    setcookie("fondo_actual", $fondo_actual, time() + 120);
-    setcookie("idioma_actual", $idioma_actual, time() + 120);
+    setcookie("fondo_actual", $fondo_actual, time() + 60);
+    setcookie("idioma_actual", $idioma_actual, time() + 60);
 
     header("Location:curriculum.php");
     exit;

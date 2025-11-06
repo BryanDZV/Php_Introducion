@@ -3,13 +3,12 @@ require "./funciones.php";
 require "./variables.php";
 
 /* Lectura de cookies */
-if (isset($_COOKIE["fondo_actual"]) && isset($_COOKIE["idioma_actual"])) {
+if (!isset($_COOKIE["fondo_actual"]) && !isset($_COOKIE["idioma_actual"])) {
+    header("Location:index.php");
+} else {
     $fondo_actual = $_COOKIE["fondo_actual"];
     $idioma_actual = $_COOKIE["idioma_actual"];
     $traduccionActual = obtenerDatos($idioma_actual);
-} else {
-    $idioma_actual = "es";
-    $traduccionActual = obtenerDatos("es");
 }
 ?>
 
