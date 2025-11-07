@@ -20,9 +20,7 @@ $errores = validarRegistro($datos);
 if (!empty($errores)) {
     $_SESSION["errores"] = $errores;
     header("Location: index.php");
-    exit;
+} else {
+    $_SESSION["usuario"] = $datos["nombre"];
+    header("Location: bienvenida.php");
 }
-
-$_SESSION["usuario"] = $datos["nombre"];
-header("Location: bienvenida.php");
-exit;

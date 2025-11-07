@@ -33,7 +33,7 @@ Puedes validar algún otro dato que se considere necesario
     </header>
     <main>
         <form action="procesar.php" method="post">
-            <input type="text" name="nombre" placeholder="Escribe tu nombre">
+            <input type="text" name="nombre" placeholder="Escribe tu nombre" value="<? ?>">
             <input type="text" name="apellidos" placeholder="Escribe tu apellidos">
             <input type="number" name="edad" placeholder="escribe edad">
             <input type="number" name="dni" place>

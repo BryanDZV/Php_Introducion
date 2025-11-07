@@ -45,3 +45,10 @@ function validarRegistro($datos)
 
     return $errores;
 }
+
+
+function obtenerDatos($ruta)
+{
+    $arrayDatos = json_decode(file_get_contents($ruta), true);
+    return $arrayDatos;
+}

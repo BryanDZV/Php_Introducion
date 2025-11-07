@@ -5,6 +5,9 @@ require "./funciones.php";
 $idiomas = json_decode(file_get_contents("./datos/idiomas.json"), true);
 $estudios = json_decode(file_get_contents("./datos/estudios.json"), true);
 $paises = json_decode(file_get_contents("./datos/paises.json"), true);
+
+
+
 ?>
 
 <!DOCTYPE html>
