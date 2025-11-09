@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "./variables.php";
 require "./funciones.php";
 
@@ -55,12 +56,12 @@ $paises = json_decode(file_get_contents("./datos/paises.json"), true);
         <p>
             <label>País:</label><br>
             <select name="pais">
-                <?php foreach ($paises as $pais): ?>
+                <?php foreach ($paises as $pais) { ?>
                     <option value="<?= $pais ?>"
                         <?= (($_SESSION['form']['pais'] ?? '') === $pais) ? 'selected' : '' ?>>
                         <?= $pais ?>
                     </option>
-                <?php endforeach; ?>
+                <?php } ?>
             </select>
             <span class="error"><?= $_SESSION['errores']['pais'] ?? '' ?></span>
         </p>
@@ -68,22 +69,25 @@ $paises = json_decode(file_get_contents("./datos/paises.json"), true);
         <p>
             <label>Estudios:</label><br>
             <select name="estudios">
-                <?php foreach ($estudios as $est): ?>
+                <?php foreach ($estudios as $est) { ?>
                     <option value="<?= $est ?>"
                         <?= (($_SESSION['form']['estudios'] ?? '') === $est) ? 'selected' : '' ?>>
                         <?= $est ?>
                     </option>
-                <?php endforeach; ?>
+                <?php } ?>
             </select>
         </p>
 
         <p>
             <label>Idiomas:</label><br>
-            <?php foreach ($idiomas as $idioma): ?>
+            <?php foreach ($idiomas as $idioma) {
+                // 'checked':  si $idioma está en el array guardado.
+                $esta_marcado = in_array($idioma, $_SESSION['form']['idiomas'] ?? []);
+            ?>
                 <input type="checkbox" name="idiomas[]" value="<?= $idioma ?>"
-                    <?= (in_array($idioma, $_SESSION['form']['idiomas'] ?? [])) ? 'checked' : '' ?>>
+                    <?= $esta_marcado ? 'checked' : '' ?>>
                 <?= $idioma ?>
-            <?php endforeach; ?>
+            <?php } ?>
         </p>
 
         <p><input type="submit" value="Registrarse"></p>
@@ -92,6 +96,4 @@ $paises = json_decode(file_get_contents("./datos/paises.json"), true);
 
 </html>
 
-<?php
-unset($_SESSION['errores']);
 ?>

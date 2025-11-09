@@ -1,6 +1,10 @@
 <?php
+
+session_start();
+
 require "./variables.php";
 require "./funciones.php";
+
 
 $datos = [
     "nombre" => $_POST["nombre"] ?? "",
@@ -13,7 +17,7 @@ $datos = [
     "idiomas" => $_POST["idiomas"] ?? []
 ];
 
-$_SESSION["form"] = $datos;
+$_SESSION["form"] = $datos; //precargar en index si hay errores
 
 $errores = validarRegistro($datos);
 
@@ -21,6 +25,6 @@ if (!empty($errores)) {
     $_SESSION["errores"] = $errores;
     header("Location: index.php");
 } else {
-    $_SESSION["usuario"] = $datos["nombre"];
+    $_SESSION["usuario"] = $datos; //si estan bien guardo los datos del usuario
     header("Location: bienvenida.php");
 }
