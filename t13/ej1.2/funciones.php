@@ -30,3 +30,13 @@ function palabraGuion($palabra)
     $palabraSecreta = str_repeat("_ ", count($letras));
     return $palabraSecreta;
 }
+function verificarLetra($letraUsuario, $palabra)
+{
+    if (in_array($letraUsuario, $palabra)) {
+        foreach ($palabra as $i => $letra) {
+            if ($letra === $letraUsuario) {
+                $estado[$i] = $letraUsuario;  // cambia el _ por la letra
+            }
+        }
+    }
+}
