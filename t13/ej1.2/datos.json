@@ -1,0 +1,62 @@
+{
+  "animales": [
+    "perro",
+    "gato",
+    "elefante",
+    "tigre",
+    "jirafa",
+    "leon",
+    "cebra",
+    "hipopotamo",
+    "rinoceronte",
+    "pingüino"
+  ],
+  "frutas": [
+    "manzana",
+    "banana",
+    "naranja",
+    "pera",
+    "kiwi",
+    "sandia",
+    "melon",
+    "fresa",
+    "uva",
+    "mango"
+  ],
+  "paises": [
+    "españa",
+    "mexico",
+    "argentina",
+    "chile",
+    "colombia",
+    "venezuela",
+    "peru",
+    "uruguay",
+    "ecuador",
+    "canada"
+  ],
+  "colores": [
+    "rojo",
+    "azul",
+    "verde",
+    "amarillo",
+    "negro",
+    "blanco",
+    "gris",
+    "naranja",
+    "violeta",
+    "marron"
+  ],
+  "objetos": [
+    "mesa",
+    "silla",
+    "ordenador",
+    "telefono",
+    "coche",
+    "lampara",
+    "reloj",
+    "boligrafo",
+    "mochila",
+    "ventana"
+  ]
+}
