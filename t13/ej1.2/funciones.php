@@ -26,10 +26,7 @@ function obtenerPalabra()
 function palabraGuion($palabra)
 {
 
-    $palabraSecreta = preg_replace("/[a-zA-ZáéíóúÁÉÍÓÚñÑ]/u", "_", $palabra);
-
-
-    $palabraSecreta = implode(" ", preg_split("/ /", trim($palabraSecreta), -1, PREG_SPLIT_NO_EMPTY));
-
+    $letras = str_split($palabra);
+    $palabraSecreta = str_repeat("_ ", count($letras));
     return $palabraSecreta;
 }
