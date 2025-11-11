@@ -1,4 +1,100 @@
-.titulo {
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #b3e5fc, #e1f5fe);
+  text-align: center;
+  color: #01579b;
+  padding: 20px;
+}
+
+/* Títulos */
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.palabra {
+  font-size: 2.5rem;
+  letter-spacing: 12px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+/* Puntuación */
+.puntuacion-caja {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.puntuacion {
+  font-size: 1.2rem;
+  margin: 10px;
+}
+
+.imagen-error img {
+  width: 150px;
+  height: auto;
+  margin-top: 10px;
+}
+
+table {
+  margin: 0 auto 20px;
+  border-collapse: separate; /* NO collapse */
+  border-spacing: 10px 10px; /* espacio horizontal y vertical entre celdas */
+}
+
+td {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 6px;
+  padding: 0;
+}
+
+td form button {
+  width: 100%;
+  height: 100%;
+  background-color: #0288d1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+td form button:hover {
+  background-color: #0277bd;
+  transform: scale(1.05);
+}
+
+td.usada {
+  background-color: #1e2426;
+  color: white;
+  font-weight: bold;
+  cursor: not-allowed;
+}
+
+/* Botón reiniciar */
+button.reset {
+  margin-top: 30px;
+  background-color: #d32f2f;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button.reset:hover {
+  background-color: #c62828;
 }
