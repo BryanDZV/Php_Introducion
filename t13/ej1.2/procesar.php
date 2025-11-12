@@ -2,7 +2,7 @@
 session_start();
 require "./funciones.php";
 
-// RUTA 1: La partida NO existe, hay que inicializarla.
+// RUTA 1:
 if (empty($_SESSION["palabra"])) {
 
     // Inicializamos todas las variables
@@ -15,21 +15,18 @@ if (empty($_SESSION["palabra"])) {
     $_SESSION["letras_usadas"] = [];
     $_SESSION["turno"] = 1; // Jugador 1 empieza
 
-    // Enviamos la cabecera de redirección
     header("Location: index.php");
 }
-// RUTA 2: La partida SÍ existe, procesamos un movimiento.
+// RUTA 2:
 else {
 
-    // Comprobamos si el jugador envió una letra
+    // envió una letra
     if (isset($_POST["letra"])) {
         $letra = strtolower($_POST["letra"]);
         procesarLetra($letra, $_SESSION["turno"]);
         $_SESSION["turno"] = cambiarTurno($_SESSION["turno"]);
     }
 
-    // Enviamos la cabecera de redirección
+
     header("Location: index.php");
 }
-
-// El script termina aquí naturalmente.

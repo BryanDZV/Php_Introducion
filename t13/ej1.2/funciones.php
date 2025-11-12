@@ -63,10 +63,10 @@ function procesarLetra($letra, $turno)
 function abecedario()
 {
     $abecedario = range('a', 'z');
+    $abecedario[] = 'ñ';
     $tabla = "<table>";
     $tabla .= "<tr>";
 
-    // Determinar si el juego terminó
     $finJuego = ($_SESSION['palabra'] === $_SESSION['palabraSecreta'] ||
         $_SESSION['erroresJ1'] >= 7 ||
         $_SESSION['erroresJ2'] >= 7);
@@ -79,7 +79,7 @@ function abecedario()
         if (!$usada && !$finJuego) {
             $tabla .= "<form action='procesar.php' method='post'>
                         <input type='hidden' name='letra' value='$letra'>
-                        <button type='submit'>" . strtoupper($letra) . "</button>
+                        <button class='button' type='submit'>" . strtoupper($letra) . "</button>
                        </form>";
         } else {
             $tabla .= strtoupper($letra);
