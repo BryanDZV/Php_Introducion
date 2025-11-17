@@ -238,4 +238,34 @@ use app\models\Coche as Fantasma;
 require_once __DIR__ . "/coche.php";
 
 $coche1 = new Fantasma();
-echo $coche1;
+//echo $coche1;
+
+//auto loading
+
+
+require __DIR__ . "/autoload.php";
+
+use clases\X;
+
+$x1 = new X("soy pedrin");
+//echo $x1;
+//herencia
+
+use clases\Vehiculos;
+use clases\Moto;
+
+$moto1 = new Moto("suzuki", 2000, "moto", "Japon");
+//echo $moto1;
+
+//SOBREESCRITURA DE METODOS
+
+use clases\Animal;
+use clases\Perro;
+
+$perro1 = new Perro(3, "perroJuanalete");
+$animal1 = new Animal("padre");
+
+//echo "soy el HIJO  " . $perro1->getSonido() . "<br>";
+
+//echo "soy el PADRE   " . $animal1->getSonido();
+//CLASES ABTRACTAS
