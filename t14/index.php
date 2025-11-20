@@ -1,5 +1,7 @@
 <?php
 
+use clases\Circulo;
+
 
 
 //clases
@@ -269,3 +271,5 @@ $animal1 = new Animal("padre");
 
 //echo "soy el PADRE   " . $animal1->getSonido();
 //CLASES ABTRACTAS
+$circulo1 = new Circulo(5);
+echo $circulo1->mostrarInfo();

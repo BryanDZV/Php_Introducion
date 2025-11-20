@@ -8,9 +8,10 @@ spl_autoload_register(function ($class) {
 
     if (file_exists($path)) {
         echo "ARCHIVO ENCONTRADO <br>";
+        echo "**********************************<br>";
         require_once $path;
     } else {
         echo "ARCHIVO NO ENCONTRADO <br>";
+        echo "**********************************<br>";
     }
-    echo "**********************************<br>";
 });
