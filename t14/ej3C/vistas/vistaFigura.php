@@ -22,8 +22,8 @@ $color = implode(", ", $resultado["color"]);
         <h1>Resultado: <?= ucfirst($resultado["tipo"]) ?></h1>
 
         <div class="result-box">
-            <p>Área: <?= $resultado["area"] ?></p>
-            <p>Perímetro: <?= $resultado["perimetro"] ?></p>
+            <p>Perímetro: <?= $resultado["perimetro"] ?> cm</p>
+            <p>Área: <?= $resultado["area"] ?> cm²</p>
             <p>Color: <?= $color ?></p>
         </div>
 

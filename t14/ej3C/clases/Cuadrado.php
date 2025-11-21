@@ -30,21 +30,21 @@ class Cuadrado extends Figura
     public function dibujar($ruta = null)
     {
         if ($ruta === null) {
-            $ruta = "img/" . strtolower("cuadrado") . "_" . time() . ".png";
+            $ruta = "img/cuadrado_" . time() . ".png";
         }
 
-        $img = imagecreatetruecolor($this->size, $this->size);
+        $escala = 10; // 1 cm = 10 px
+        $ladoPx = min(450, $this->lado * $escala);
 
-        // Color de la figura
+        $img = imagecreatetruecolor($ladoPx + 40, $ladoPx + 40);
+
+        $blanco = imagecolorallocate($img, 255, 255, 255);
+        imagefill($img, 0, 0, $blanco);
+
         $rgb = $this->color;
         $colorGD = imagecolorallocate($img, $rgb[0], $rgb[1], $rgb[2]);
 
-        // Dimensiones centradas
-        $ladoPx = min($this->size - 20, $this->lado);
-        $x1 = ($this->size - $ladoPx) / 2;
-        $y1 = ($this->size - $ladoPx) / 2;
-
-        imagefilledrectangle($img, $x1, $y1, $x1 + $ladoPx, $y1 + $ladoPx, $colorGD);
+        imagefilledrectangle($img, 20, 20, 20 + $ladoPx, 20 + $ladoPx, $colorGD);
 
         imagepng($img, $ruta);
 

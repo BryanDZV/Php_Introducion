@@ -8,6 +8,7 @@ class Triangulo extends Figura
     private $ladoB;
     private $ladoC;
 
+
     public function __construct($color, $size, $ladoA, $ladoB, $ladoC)
     {
         parent::__construct($color, $size, "Triángulo");
@@ -35,30 +36,35 @@ class Triangulo extends Figura
     public function dibujar($ruta = null)
     {
         if ($ruta === null) {
-            $ruta = "img/" . strtolower("triangulo") . "_" . time() . ".png";
+            $ruta = "img/triangulo_" . time() . ".png";
         }
+        //escalo 1cm =10px
+        $escala = 10;
+        $ladoPx = min(450, $this->ladoA * $escala);
 
-        $img = imagecreatetruecolor($this->size, $this->size);
+        $img = imagecreatetruecolor($ladoPx + 40, $ladoPx + 40);
 
-        // Fondo blanco
         $blanco = imagecolorallocate($img, 255, 255, 255);
         imagefill($img, 0, 0, $blanco);
-
 
         $rgb = $this->color;
         $colorGD = imagecolorallocate($img, $rgb[0], $rgb[1], $rgb[2]);
 
-        // Triángulo 
-        $x1 = $this->size / 2;
-        $y1 = 10;                 // punta arriba
-        $x2 = 10;
-        $y2 = $this->size - 10;   // base izquierda
-        $x3 = $this->size - 10;
-        $y3 = $this->size - 10;   // base derecha
+        // Coordenadas del triángulo equilátero
+        $p1 = [20, 20 + $ladoPx];
+        $p2 = [20 + $ladoPx, 20 + $ladoPx];
+        $p3 = [20 + ($ladoPx / 2), 20];
 
-        $puntos = [$x1, $y1, $x2, $y2, $x3, $y3];
+        $points = [
+            (int)$p1[0],
+            (int)$p1[1],
+            (int)$p2[0],
+            (int)$p2[1],
+            (int)$p3[0],
+            (int)$p3[1],
+        ];
 
-        imagefilledpolygon($img, $puntos, 3, $colorGD);
+        imagefilledpolygon($img, $points, 3, $colorGD);
 
         imagepng($img, $ruta);
 

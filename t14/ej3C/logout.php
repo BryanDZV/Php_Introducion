@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-// 1️⃣ Borrar todas las variables de sesión
+// Borrar todas las variables de sesión
 $_SESSION = [];
 
-// 2️⃣ Si existe la cookie de sesión, eliminarla
+// cookie de sesión
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
     setcookie(
@@ -18,9 +18,8 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
-// 3️⃣ Destruir la sesión completamente
+//  Destruir la sesión 
 session_destroy();
 
-// 4️⃣ Redirigir al inicio
 header("Location: index.php");
 return;

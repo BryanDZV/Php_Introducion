@@ -8,7 +8,7 @@ use clases\Cuadrado;
 use clases\Triangulo;
 use clases\Rectangulo;
 
-// 1️⃣ Primer paso: elección de figura
+// ruta 1
 if (!empty($_POST["eleccion"])) {
 
     $eleccion = $_POST["eleccion"];
@@ -26,16 +26,16 @@ if (!empty($_POST["eleccion"])) {
     }
 }
 
-// 2️⃣ Segundo paso: recibe datos de la figura
+// ruta 2
 elseif (!empty($_POST) && !empty($_SESSION["eleccion"])) {
 
     $tipo = $_SESSION["eleccion"];
 
-    // Convertir color: nombre → array RGB
+    //  nombre → array RGB
     if (!empty($_POST['color']) && isset($colores[$_POST['color']])) {
         $color = $colores[$_POST['color']];
     } else {
-        $color = [0, 0, 0]; // negro por defecto
+        $color = [0, 0, 0];
     }
 
     // Crear el objeto según tipo
@@ -74,7 +74,7 @@ elseif (!empty($_POST) && !empty($_SESSION["eleccion"])) {
     return;
 }
 
-// 3️⃣ Si llega aquí y no hay datos → error
+// ruta error
 else {
     header("Location: index.php?error=" . urlencode("No has enviado datos"));
     return;
