@@ -18,12 +18,10 @@ class Rectangulo extends Figura
     {
         return "Rectángulo";
     }
-
     public function getPerimetro()
     {
         return 2 * ($this->base + $this->altura);
     }
-
     public function getArea()
     {
         return $this->base * $this->altura;
@@ -35,39 +33,28 @@ class Rectangulo extends Figura
             $ruta = "img/" . strtolower("rectangulo") . "_" . time() . ".png";
         }
 
-        // 1. Definir escala (1cm = 10px)
-        $escala = 10;
+        $escala = 10; // 1cm = 10px
 
-        // 2. Calcular dimensiones en píxeles (con un tope de seguridad si quieres, como en triangulo)
-        // Multiplicamos la medida real por la escala
+        // Calculamos el tamaño exacto en píxeles
         $basePx = $this->base * $escala;
         $alturaPx = $this->altura * $escala;
 
-        // Opcional: Si quieres limitar el tamaño máximo como en triangulo (min 450)
-        // $basePx = min(450, $this->base * $escala);
-        // $alturaPx = min(450, $this->altura * $escala);
+        // Creamos la imagen del TAMAÑO EXACTO (sin sumar 40)
+        $img = imagecreatetruecolor($basePx, $alturaPx);
 
-        // 3. Crear imagen con tamaño dinámico (+40px para margen)
-        $img = imagecreatetruecolor($basePx + 40, $alturaPx + 40);
-
-        // 4. Fondo blanco
+        // Fondo blanco
         $blanco = imagecolorallocate($img, 255, 255, 255);
         imagefill($img, 0, 0, $blanco);
 
-        // 5. Color de la figura
+        // Color de la figura
         $rgb = $this->color;
         $colorGD = imagecolorallocate($img, $rgb[0], $rgb[1], $rgb[2]);
 
-        // 6. Coordenadas (dejando 20px de margen a la izquierda y arriba)
-        $x1 = 20;
-        $y1 = 20;
-        $x2 = 20 + $basePx;
-        $y2 = 20 + $alturaPx;
-
-        imagefilledrectangle($img, $x1, $y1, $x2, $y2, $colorGD);
+        // Dibujamos desde la esquina superior izquierda (0, 0)
+        // hasta la esquina inferior derecha ($basePx, $alturaPx)
+        imagefilledrectangle($img, 0, 0, $basePx, $alturaPx, $colorGD);
 
         imagepng($img, $ruta);
-
         return $ruta;
     }
 }

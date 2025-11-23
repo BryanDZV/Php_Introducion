@@ -8,7 +8,6 @@ class Triangulo extends Figura
     private $ladoB;
     private $ladoC;
 
-
     public function __construct($color, $size, $ladoA, $ladoB, $ladoC)
     {
         parent::__construct($color, $size, "Triángulo");
@@ -21,7 +20,6 @@ class Triangulo extends Figura
     {
         return "Triángulo";
     }
-
     public function getPerimetro()
     {
         return $this->ladoA + $this->ladoB + $this->ladoC;
@@ -38,11 +36,14 @@ class Triangulo extends Figura
         if ($ruta === null) {
             $ruta = "img/triangulo_" . time() . ".png";
         }
-        //escalo 1cm =10px
-        $escala = 10;
-        $ladoPx = min(450, $this->ladoA * $escala);
 
-        $img = imagecreatetruecolor($ladoPx + 40, $ladoPx + 40);
+        $escala = 10;
+
+        // Usaremos el ladoA como referencia para el tamaño
+        $ladoPx = $this->ladoA * $escala;
+
+        // Creamos un lienzo cuadrado del tamaño del lado
+        $img = imagecreatetruecolor($ladoPx, $ladoPx);
 
         $blanco = imagecolorallocate($img, 255, 255, 255);
         imagefill($img, 0, 0, $blanco);
@@ -50,25 +51,32 @@ class Triangulo extends Figura
         $rgb = $this->color;
         $colorGD = imagecolorallocate($img, $rgb[0], $rgb[1], $rgb[2]);
 
-        // Coordenadas del triángulo equilátero
-        $p1 = [20, 20 + $ladoPx];
-        $p2 = [20 + $ladoPx, 20 + $ladoPx];
-        $p3 = [20 + ($ladoPx / 2), 20];
+        // Coordenadas SIN márgenes (Asumiendo triángulo equilátero visualmente)
+
+        // Punto 1: Esquina inferior izquierda (0, abajo del todo)
+        $p1x = 0;
+        $p1y = $ladoPx;
+
+        // Punto 2: Esquina inferior derecha (ancho máximo, abajo del todo)
+        $p2x = $ladoPx;
+        $p2y = $ladoPx;
+
+        // Punto 3: Centro arriba (mitad del ancho, arriba del todo - coordenada 0)
+        $p3x = $ladoPx / 2;
+        $p3y = 0;
 
         $points = [
-            (int)$p1[0],
-            (int)$p1[1],
-            (int)$p2[0],
-            (int)$p2[1],
-            (int)$p3[0],
-            (int)$p3[1],
+            (int)$p1x,
+            (int)$p1y,
+            (int)$p2x,
+            (int)$p2y,
+            (int)$p3x,
+            (int)$p3y,
         ];
 
         imagefilledpolygon($img, $points, 3, $colorGD);
 
         imagepng($img, $ruta);
-
-
         return $ruta;
     }
 }
