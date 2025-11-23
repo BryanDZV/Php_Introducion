@@ -3,9 +3,10 @@ session_start();
 require_once "../datos/datos.php";
 if (!isset($_SESSION["datoTipo"])) {
     header("Location: ../index.php");
-    return;
+} else {
+    $campos = $_SESSION["datoTipo"];
 }
-$campos = $_SESSION["datoTipo"];
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

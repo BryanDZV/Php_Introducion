@@ -1,10 +1,20 @@
 <?php
 session_start();
 
-// Borrar todas las variables de sesión
+/*
+    ENTRADA:
+    Se llega aquí cuando el usuario hace clic en "Reiniciar".
+
+    OBJETIVO:
+    - Borrar la sesión completa
+    - Dejar al usuario como si entrara de nuevo por primera vez
+    - Redirigir a index.php
+*/
+
+// Borrar variables de sesión
 $_SESSION = [];
 
-// cookie de sesión
+// Borrar cookie de sesión (si existe)
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
     setcookie(
@@ -18,8 +28,12 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
-//  Destruir la sesión 
+// Destruir la sesión en el servidor
 session_destroy();
 
+// Redirigir al inicio
 header("Location: index.php");
-return;
+
+// NO exit
+// NO return
+// El archivo termina aquí de forma natural, como pide tu profesor.
