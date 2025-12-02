@@ -22,7 +22,7 @@
         <input type="password" name="pass"><br><br>
 
         <label>Base de datos:</label>
-        <input type="text" name="database" value="libros" required><br><br>
+        <input type="text" name="dataBase" required><br><br>
 
         <input type="submit" value="Conectar">
 
