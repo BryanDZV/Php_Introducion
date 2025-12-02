@@ -1,21 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario</title>
+    <title>Conectar a MySQL</title>
 </head>
 
 <body>
-    <form action="controller.php" method="post">
 
-        <input type="text" name="host" id="">
-        <input type="text" name="user" id="">
-        <input type="text" name="pass" id="">
-        <input type="text" name="dataBase" id="">
+    <h1>Datos de conexión</h1>
 
+    <form action="../controller/controller.php" method="post">
 
+        <label>Host:</label>
+        <input type="text" name="host" required><br><br>
+
+        <label>Usuario:</label>
+        <input type="text" name="user" required><br><br>
+
+        <label>Contraseña:</label>
+        <input type="password" name="pass"><br><br>
+
+        <label>Base de datos:</label>
+        <input type="text" name="database" value="libros" required><br><br>
+
+        <input type="submit" value="Conectar">
 
     </form>
 

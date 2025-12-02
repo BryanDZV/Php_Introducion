@@ -4,61 +4,40 @@ namespace Clases;
 
 class Conexion
 {
+    private $host;
+    private $user;
+    private $pass;
+    private $database;
+    private $con;
 
-    private $hostname = "";
-    private $root = "";
-    private $pass = "";
-    private $database = "";
-    public function __construct($hostname, $root, $pass, $database)
+    public function __construct($host, $user, $pass, $database)
     {
-        $this->hostname = $hostname;
-        $this->root = $root;
+        $this->host = $host;
+        $this->user = $user;
         $this->pass = $pass;
         $this->database = $database;
     }
 
-    public function getHostname()
+    public function conectar()
     {
-        return $this->hostname;
+        $this->con = mysqli_connect(
+            $this->host,
+            $this->user,
+            $this->pass,
+            $this->database
+        );
+
+        if (!$this->con) {
+            die(" Error al conectar: " . mysqli_connect_error());
+        }
+
+        return $this->con;
     }
 
-    public function setHostname($hostname): void
+    public function cerrar()
     {
-        $this->hostname = $hostname;
-    }
-
-    public function getRoot()
-    {
-        return $this->root;
-    }
-
-    public function setRoot($root): void
-    {
-        $this->root = $root;
-    }
-
-    public function getPass()
-    {
-        return $this->pass;
-    }
-
-    public function setPass($pass): void
-    {
-        $this->pass = $pass;
-    }
-
-    public function getDatabase()
-    {
-        return $this->database;
-    }
-
-    public function setDatabase($database): void
-    {
-        $this->database = $database;
-    }
-
-    public function __toString(): string
-    {
-        return $this->hostname . ", " . $this->root . ", " . $this->pass . ", " . $this->database;
+        if ($this->con) {
+            mysqli_close($this->con);
+        }
     }
 }

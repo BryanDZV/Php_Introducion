@@ -1,13 +1,13 @@
 
 <?php
-if (
-    empty($_POST["host"]) && empty($_POST["user"]) &&
-    empty($_POST["pass"]) && empty($_POST["dataBase"])
-) {
-
-    $error = "Rellena los todos los Campos";
-    header("Location:formulario.php");
+session_start();
+if (!isset($_SESSION["datosConexion"])) {
+    $error = "debes rellenar los campos";
+    header("Location:formulario.php?error=$error");
 } else {
+    header("Location:./vista/dbConexion.php");
 }
+
+
 ?>
 

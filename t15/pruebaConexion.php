@@ -1,15 +1,25 @@
 <?php
 require_once "./autload.php";
 
-use clases\Conexion;
+session_start();
 
-$con = new mysqli("localhost", "root", "", "base_de_datos");
+use Clases\Conexion;
 
-if ($con->connect_errno) {
-    echo "Error conectando: " . $con->connect_error;
-    die();
+if (!isset($_SESSION["datosConexion"])) {
+    die("No hay datos de conexión en la sesión.");
 }
 
-echo "Conexión correcta!";
+$datos = $_SESSION["datosConexion"];
 
-//mysqli_close($con); para cerrar la conexion
+$conexion = new Conexion(
+    $datos["host"],
+    $datos["user"],
+    $datos["pass"],
+    $datos["dataBase"]
+);
+
+$con = $conexion->conectar();
+
+echo " Conexión correcta con mysqli.";
+
+$conexion->cerrar();
