@@ -1,12 +1,26 @@
 <?php
+require_once "../autload.php";
+session_start();
 
-$con = mysqli_connect("localhost", "root", "", "libros");
+use clases\Conexion;
 
-$isbn = "123-456-789";
-$title = "Nuevo libro de prueba";
+$datos = $_SESSION["datosConexion"];
+
+$conexion = new Conexion(
+    $datos["host"],
+    $datos["user"],
+    $datos["pass"],
+    $datos["dataBase"]
+);
+
+$con = $conexion->conectar();
+
+// Datos de prueba
+$isbn = "999-9-99-999999";
+$title = "Libro de Prueba Bryan";
 $author = "Bryan";
 $stock = 3;
-$price = 12.99;
+$price = 12.50;
 
 $sql = "INSERT INTO book (isbn, title, author, stock, price)
         VALUES ('$isbn', '$title', '$author', $stock, $price)";
@@ -14,7 +28,7 @@ $sql = "INSERT INTO book (isbn, title, author, stock, price)
 if (mysqli_query($con, $sql)) {
     echo "Libro insertado correctamente";
 } else {
-    echo "Error al insertar: " . mysqli_error($con);
+    echo "Error: " . mysqli_error($con);
 }
 
-mysqli_close($con);
+$conexion->cerrar();

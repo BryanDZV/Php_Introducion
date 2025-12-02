@@ -1,14 +1,22 @@
 <?php
+require_once "../autload.php";
+session_start();
 
-$con = mysqli_connect("localhost", "root", "", "libros");
+use clases\Conexion;
 
-$id = 1;
-$nuevoTitulo = "Harry Potter (EDICIÓN ACTUALIZADA)";
-$nuevoStock = 10;
+$datos = $_SESSION["datosConexion"];
 
-$sql = "UPDATE book 
-        SET title = '$nuevoTitulo', stock = $nuevoStock
-        WHERE id = $id";
+$conexion = new Conexion(
+    $datos["host"],
+    $datos["user"],
+    $datos["pass"],
+    $datos["dataBase"]
+);
+
+$con = $conexion->conectar();
+
+// Actualizar libro con ID = 1
+$sql = "UPDATE book SET stock = 99, price = 1.99 WHERE id = 1";
 
 if (mysqli_query($con, $sql)) {
     echo "Libro actualizado correctamente";
@@ -16,4 +24,4 @@ if (mysqli_query($con, $sql)) {
     echo "Error: " . mysqli_error($con);
 }
 
-mysqli_close($con);
+$conexion->cerrar();

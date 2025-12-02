@@ -1,20 +1,29 @@
 <?php
+require_once "../autload.php";
+session_start();
 
-$con = mysqli_connect("localhost", "root", "", "libros");
+use clases\Conexion;
 
+$datos = $_SESSION["datosConexion"];
+
+$conexion = new Conexion(
+    $datos["host"],
+    $datos["user"],
+    $datos["pass"],
+    $datos["dataBase"]
+);
+
+$con = $conexion->conectar();
+
+// Consulta
 $sql = "SELECT * FROM book";
-$resultado = mysqli_query($con, $sql);
+$res = mysqli_query($con, $sql);
 
+// Mostrar datos
 echo "<h2>Listado de libros</h2>";
 
-while ($fila = mysqli_fetch_assoc($resultado)) {
-    echo "ID: " . $fila["id"] . "<br>";
-    echo "ISBN: " . $fila["isbn"] . "<br>";
-    echo "Título: " . $fila["title"] . "<br>";
-    echo "Autor: " . $fila["author"] . "<br>";
-    echo "Stock: " . $fila["stock"] . "<br>";
-    echo "Precio: " . $fila["price"] . "<br>";
-    echo "<hr>";
+while ($fila = mysqli_fetch_assoc($res)) {
+    echo $fila["id"] . " - " . $fila["title"] . " (" . $fila["author"] . ")<br>";
 }
 
-mysqli_close($con);
+$conexion->cerrar();

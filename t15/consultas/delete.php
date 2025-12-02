@@ -1,15 +1,27 @@
 <?php
+require_once "../autload.php";
+session_start();
 
-$con = mysqli_connect("localhost", "root", "", "libros");
+use clases\Conexion;
 
-$id = 3;
+$datos = $_SESSION["datosConexion"];
 
-$sql = "DELETE FROM book WHERE id = $id";
+$conexion = new Conexion(
+    $datos["host"],
+    $datos["user"],
+    $datos["pass"],
+    $datos["dataBase"]
+);
+
+$con = $conexion->conectar();
+
+// Borrar el libro con ID = 3
+$sql = "DELETE FROM book WHERE id = 3";
 
 if (mysqli_query($con, $sql)) {
     echo "Libro borrado correctamente";
 } else {
-    echo "Error al borrar: " . mysqli_error($con);
+    echo "Error: " . mysqli_error($con);
 }
 
-mysqli_close($con);
+$conexion->cerrar();
