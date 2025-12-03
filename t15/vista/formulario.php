@@ -1,3 +1,12 @@
+<?php
+if (!empty($_GET["error"])) {
+    $error = $_GET["error"];
+} else {
+    $error = "";
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -9,6 +18,8 @@
 <body>
 
     <h1>Datos de conexión</h1>
+
+    <h2><?php echo $error ?></h2>
 
     <form action="../controller/controller.php" method="post">
 
