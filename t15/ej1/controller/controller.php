@@ -8,8 +8,9 @@ if (
     empty($_POST["host"]) && empty($_POST["user"]) &&
     empty($_POST["pass"]) && empty($_POST["dataBase"])
 ) {
+    $error = "DEBES RELLENAR LOS CAMPOS";
 
-    header("Location:../index.php");
+    header("Location:../index.php?error=$error");
 } else {
     $datosConexion = [
         "host"     => $_POST["host"],

@@ -1,4 +1,7 @@
 <?php
+
+namespace Clases;
+
 class Users extends Conexion
 {
     private $localhost;

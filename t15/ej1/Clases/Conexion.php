@@ -8,7 +8,7 @@ class Conexion
     private $user;
     private $pass;
     private $database;
-    private $con;
+    protected $con;
 
     public function __construct($host, $user, $pass, $database)
     {
