@@ -1,5 +1,4 @@
 <?php
-// Front controller mínimo
 require_once __DIR__ . '/../src/Core/Autoload.php';
 
 use App\Core\Autoload;

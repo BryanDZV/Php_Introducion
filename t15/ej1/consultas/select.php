@@ -18,10 +18,9 @@ if (!isset($_SESSION["datosConexion"])) {
         $datos["dataBase"]
     );
 
-    echo "<pre>";
-    print_r($datos);
-    echo "</pre>";
-
+    // echo "<pre>";
+    // print_r($datos);
+    // echo "</pre>";
 
     $con = $conexion->conectar();
 
