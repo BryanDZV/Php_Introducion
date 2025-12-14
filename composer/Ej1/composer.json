@@ -1,0 +1,18 @@
+{
+    "name": "bryan/ej1",
+    "description": "Ejercicio 1 Composer",
+    "type": "project",
+    "license": "GPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Bryan\\Ej1\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "BryanZavala",
+            "email": "bryan.Dweb@gmail.com"
+        }
+    ],
+    "require": {}
+}
