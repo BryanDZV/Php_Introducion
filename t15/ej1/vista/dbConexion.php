@@ -34,6 +34,6 @@ if (!isset($_SESSION["datosConexion"])) {
     } catch (Exception $e) {
 
         $error = $e->getMessage();
-        header("Location:./formulario.php=error=$error");
+        header("Location: ./formulario.php?error=$error");
     }
 }
