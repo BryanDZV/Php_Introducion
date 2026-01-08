@@ -1,6 +1,12 @@
 <?php
 
-require_once __DIR__ . '/../Model/MailModel.php';
+
+namespace App\ContactoMvc\Controller;
+
+use App\ContactoMvc\Model\MailModel;
+
+
+
 
 class ContactController
 {
@@ -12,7 +18,7 @@ class ContactController
             $mensaje = $_POST['mensaje'];
 
             $mailModel = new MailModel();
-            $resultado = $mailModel->enviarEmail($email, $mensaje);
+            $resultado = $mailModel->enviarCorreo($email, $mensaje);
 
             require __DIR__ . '/../Views/result.php';
         }

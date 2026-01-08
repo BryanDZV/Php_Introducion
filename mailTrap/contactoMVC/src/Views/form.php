@@ -10,7 +10,7 @@
 
     <h2>Formulario de contacto</h2>
 
-    <form action="../index.php" method="POST">
+    <form action="./index.php" method="POST">
         <label>Email:</label>
         <input type="email" name="email" required><br><br>
 

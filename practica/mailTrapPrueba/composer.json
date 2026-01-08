@@ -1,0 +1,17 @@
+{
+    "name": "bryan/mail-trap-prueba",
+    "autoload": {
+        "psr-4": {
+            "Bryan\\MailTrapPrueba\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "BryanZavala",
+            "email": "bryan.Dweb@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^7.0"
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "name": "bryan/ej0",
+    "description": "practica",
+    "autoload": {
+        "psr-4": {
+            "Bryan\\Ej0\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "BryanZavala",
+            "email": "bryan.Dweb@gmail.com"
+        }
+    ],
+    "require": {}
+}

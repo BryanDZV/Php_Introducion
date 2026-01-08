@@ -1,0 +1,15 @@
+{
+    "name": "bryan/crud",
+    "autoload": {
+        "psr-4": {
+            "Bryan\\Crud\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "BryanZavala",
+            "email": "bryan.Dweb@gmail.com"
+        }
+    ],
+    "require": {}
+}

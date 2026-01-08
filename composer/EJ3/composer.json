@@ -1,0 +1,17 @@
+{
+    "name": "bryan/ej3",
+    "description": "Ejercicio 3 Composer",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Bryan\\Ej3\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "BryanZavala",
+            "email": "bryan.Dweb@gmail.com"
+        }
+    ],
+    "require": {}
+}

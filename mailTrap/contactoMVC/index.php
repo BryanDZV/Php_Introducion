@@ -1,6 +1,12 @@
 <?php
+require __DIR__ . "/vendor/autoload.php";
 
-require_once 'Controller/ContactController.php';
+use App\ContactoMvc\Controller\GmailController;
 
-$controller = new ContactController();
-$controller->enviarMensaje();
+use Dotenv\Dotenv;
+
+// CARGAR VARIABLES DE ENTORNO
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+$controller = new GmailController();
+$controller->gestionarEnvio();

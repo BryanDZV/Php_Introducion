@@ -1,0 +1,16 @@
+{
+    "name": "bryan/login",
+    "description": "practica login",
+    "autoload": {
+        "psr-4": {
+            "Bryan\\Login\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "BryanZavala",
+            "email": "bryan.Dweb@gmail.com"
+        }
+    ],
+    "require": {}
+}

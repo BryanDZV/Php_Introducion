@@ -9,12 +9,12 @@
 <body>
 
     <?php if ($resultado): ?>
-        <p> Mensaje enviado correctamente</p>
+        <p>✅ Correo capturado correctamente en Mailtrap</p>
     <?php else: ?>
-        <p> Error al enviar el mensaje</p>
+        <p>❌ Error al enviar el correo</p>
     <?php endif; ?>
 
-    <a href="view/form.php">Volver</a>
+    <a href="/mailTrap/contactoMVC/index.php">Volver</a>
 
 </body>
 

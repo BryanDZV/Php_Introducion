@@ -1,31 +1,34 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+
+
+namespace App\ContactoMvc\Model;
+
+use Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 
 class MailModel
 {
-    public function enviarEmail($email, $mensaje)
+    public function enviarCorreo($email, $mensaje)
     {
         $mail = new PHPMailer(true);
 
         try {
-            // Configuración SMTP
+            // CONFIGURACIÓN MAILTRAP
             $mail->isSMTP();
-            $mail->Host = "smtp.gmail.com";
+            $mail->Host = "smtp.mailtrap.io";
             $mail->SMTPAuth = true;
-            $mail->Username = "tucorreo@gmail.com";
-            $mail->Password = "CLAVE_DE_APLICACION";
-            $mail->SMTPSecure = "ssl";
-            $mail->Port = 465;
+            $mail->Username = "e0881087bdfe14";
+            $mail->Password = "f0dfb865118f55";
+            $mail->Port = 2525;
 
-            // Correo
-            $mail->setFrom("tucorreo@gmail.com", "Contacto Web");
-            $mail->addAddress("tucorreo@gmail.com");
+            // CORREO
+            $mail->setFrom("pruebas@mailtrap.io", "Prueba MVC");
+            $mail->addAddress("destino@mailtrap.io");
             $mail->addReplyTo($email);
-            $mail->Subject = "Nuevo mensaje de contacto";
+
+            $mail->Subject = "Correo de prueba con Mailtrap";
             $mail->MsgHTML($mensaje);
 
             $mail->send();
