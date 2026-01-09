@@ -1,0 +1,15 @@
+{
+    "name": "bryan/libros",
+    "autoload": {
+        "psr-4": {
+            "Bryan\\Libros\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "BryanDZV",
+            "email": "bryan.dweb@gmail.com"
+        }
+    ],
+    "require": {}
+}
