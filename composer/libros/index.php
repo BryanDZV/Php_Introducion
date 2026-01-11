@@ -1,18 +1,38 @@
 <?php
-require_once "../libros/vendor/autoload.php";
 
+require __DIR__ . "/vendor/autoload.php";
+
+use Bryan\Libros\Controllers\CustomerController;
 use Bryan\Libros\Controllers\SaleController;
 
-$controller = new SaleController();
-$action = $_GET['action'] ?? 'cliente';
+/*
+    1. Recogemos la acción
+    2. Si no viene ninguna, mostramos clientes
+*/
 
-switch ($action) {
-    case 'libros':
-        $controller->seleccionarLibros();
-        break;
-    case 'procesar':
-        $controller->procesarVenta();
-        break;
-    default:
-        $controller->seleccionarCliente();
+if (isset($_GET['action'])) {
+    $action = $_GET['action'];
+} else {
+    $action = 'cliente';
+}
+
+$customerController = new CustomerController();
+$saleController     = new SaleController();
+
+/*
+    Decidimos qué método ejecutar
+*/
+
+if ($action === 'crearCliente') {
+
+    $customerController->crearCliente();
+} elseif ($action === 'libros') {
+
+    $saleController->seleccionarLibros();
+} elseif ($action === 'procesar') {
+
+    $saleController->procesarVenta();
+} else {
+
+    $saleController->seleccionarCliente();
 }

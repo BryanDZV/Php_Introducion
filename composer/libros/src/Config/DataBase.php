@@ -1,8 +1,7 @@
 <?php
 
-namespace Bryan\Libros\config;
+namespace Bryan\Libros\Config;
 
-use Exception;
 use PDO;
 
 class DataBase
@@ -10,27 +9,39 @@ class DataBase
     private static $instance = null;
     private $conexion;
 
+    /*
+        Constructor privado
+        Se ejecuta una sola vez
+    */
     private function __construct()
     {
-        try {
-            $dns = "mysql:dbname=libros;host=localhost;";
-            $this->conexion = new PDO("$dns", "root", "");
-            $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->conexion->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-            echo "CONEXION EXITOSA";
-        } catch (Exception $e) {
-            $e->getMessage();
-        }
+        $this->conexion = new PDO(
+            "mysql:dbname=libros;host=localhost",
+            "root",
+            ""
+        );
+
+        $this->conexion->setAttribute(
+            PDO::ATTR_DEFAULT_FETCH_MODE,
+            PDO::FETCH_ASSOC
+        );
     }
 
+    /*
+        Devuelve siempre la misma instancia
+    */
     public static function getInstance()
     {
         if (self::$instance === null) {
-            self::$instance = new self();
+            self::$instance = new DataBase();
         }
+
         return self::$instance;
     }
 
+    /*
+        Devuelve la conexión PDO
+    */
     public function getConexion()
     {
         return $this->conexion;

@@ -1,66 +1,94 @@
 <?php
 
-
 namespace Bryan\Libros\Models;
 
-use Bryan\Libros\config\DataBase;
+use Bryan\Libros\Config\DataBase;
 use Exception;
-use PDO;
 
 class SaleModel
 {
-    private PDO $db;
-    private BookModel $bookModel;
+    private $db;
 
     public function __construct()
     {
         $this->db = DataBase::getInstance()->getConexion();
-        $this->bookModel = new BookModel();
     }
 
-    /**
-     * Inserción_venta_libro (1, [1 => 2, 2 => 1])
-     */
-    public function insercionVentaLibro(int $clienteId, array $libros): void
+    /*
+        Insercion_venta_libro (1, [id => cantidad])
+    */
+    public function insercion_venta_libro($clienteId, $libros)
     {
-        try {
-            // 1️⃣ Transacción
-            $this->db->beginTransaction();
+        // 1. Iniciar transacción
+        $this->db->beginTransaction();
 
-            // 2️⃣ Insertar venta
-            $stmtSale = $this->db->prepare(
-                "INSERT INTO sale (customer_id, date) VALUES (:cliente, NOW())"
-            );
-            $stmtSale->execute(['cliente' => $clienteId]);
+        // 2. Insertar venta
+        $sqlSale = "
+            INSERT INTO sale (customer_id, date)
+            VALUES (:cliente, NOW())
+        ";
+        $stmtSale = $this->db->prepare($sqlSale);
+        $stmtSale->execute([
+            ':cliente' => $clienteId
+        ]);
 
-            $saleId = $this->db->lastInsertId();
+        $saleId = $this->db->lastInsertId();
 
-            // 3️⃣ Insertar libros
-            $stmtInsert = $this->db->prepare(
-                "INSERT INTO sale_book (book_id, sale_id, amount)
-                 VALUES (:book, :sale, :amount)"
-            );
+        // 3. Procesar libros
+        foreach ($libros as $bookId => $cantidad) {
 
-            foreach ($libros as $bookId => $cantidad) {
+            if ($cantidad > 0) {
 
-                if ($cantidad <= 0) continue;
+                // 3.1 Comprobar libro y stock
+                $sqlCheck = "
+                    SELECT stock 
+                    FROM book 
+                    WHERE id = :id
+                ";
+                $stmtCheck = $this->db->prepare($sqlCheck);
+                $stmtCheck->execute([
+                    ':id' => $bookId
+                ]);
 
-                if (!$this->bookModel->exists($bookId)) {
+                $libro = $stmtCheck->fetch();
+
+                if (!$libro) {
+                    $this->db->rollBack();
                     throw new Exception("Libro $bookId no existe");
                 }
 
-                $stmtInsert->execute([
-                    'book'   => $bookId,
-                    'sale'   => $saleId,
-                    'amount' => $cantidad
+                if ($cantidad > $libro['stock']) {
+                    $this->db->rollBack();
+                    throw new Exception("Stock insuficiente del libro $bookId");
+                }
+
+                // 3.2 Insertar en sale_book
+                $sqlSaleBook = "
+                    INSERT INTO sale_book (book_id, sale_id, amount)
+                    VALUES (:book, :sale, :amount)
+                ";
+                $stmtSaleBook = $this->db->prepare($sqlSaleBook);
+                $stmtSaleBook->execute([
+                    ':book'   => $bookId,
+                    ':sale'   => $saleId,
+                    ':amount' => $cantidad
+                ]);
+
+                // 3.3 Reducir stock
+                $sqlUpdate = "
+                    UPDATE book
+                    SET stock = stock - :cantidad
+                    WHERE id = :id
+                ";
+                $stmtUpdate = $this->db->prepare($sqlUpdate);
+                $stmtUpdate->execute([
+                    ':cantidad' => $cantidad,
+                    ':id'       => $bookId
                 ]);
             }
-
-            // 4️⃣ Confirmar
-            $this->db->commit();
-        } catch (Exception $e) {
-            $this->db->rollBack();
-            throw $e;
         }
+
+        // 4. Confirmar transacción
+        $this->db->commit();
     }
 }

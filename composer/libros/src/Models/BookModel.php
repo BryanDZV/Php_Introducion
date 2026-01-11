@@ -2,27 +2,20 @@
 
 namespace Bryan\Libros\Models;
 
-use Bryan\Libros\config\DataBase;
-use PDO;
+use Bryan\Libros\Config\DataBase;
 
 class BookModel
 {
-    private PDO $db;
+    private $db;
 
     public function __construct()
     {
         $this->db = DataBase::getInstance()->getConexion();
     }
 
-    public function getAll(): array
+    public function getAll()
     {
-        return $this->db->query("SELECT id, title FROM book")->fetchAll();
-    }
-
-    public function exists(int $bookId): bool
-    {
-        $stmt = $this->db->prepare("SELECT id FROM book WHERE id = :id");
-        $stmt->execute(['id' => $bookId]);
-        return $stmt->rowCount() > 0;
+        $sql = "SELECT id, title, price, stock FROM book";
+        return $this->db->query($sql)->fetchAll();
     }
 }

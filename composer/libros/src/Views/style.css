@@ -1,0 +1,35 @@
+/* Estilos básicos que puedes poner aquí o en un archivo .css */
+body {
+  font-family: sans-serif;
+  background-color: #f4f4f9;
+}
+
+.contenedor-padre {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+  background-color: white;
+}
+.cajaCliente {
+  border: 1px solid #eee;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.cajaCrearCliente {
+  border: 1px solid #eee;
+  padding: 15px;
+  border-radius: 5px;
+}
+/* Estilo para que el enlace parezca un botón */
+.boton-link {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+}

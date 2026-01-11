@@ -2,69 +2,52 @@
 
 namespace Bryan\Libros\Models;
 
-use Bryan\Libros\config\DataBase;
-use PDO;
-
+use Bryan\Libros\Config\DataBase;
 
 class CustomerModel
 {
-    private PDO $conexion;
+    private $db;
 
+    /*
+        Al crear el modelo obtenemos la conexión
+    */
     public function __construct()
     {
-        $this->conexion = DataBase::getInstance()->getConexion();
+        $this->db = DataBase::getInstance()->getConexion();
     }
 
-    public function getAll(): array
+    /*
+        Obtener todos los clientes
+    */
+    public function getAll()
     {
+        $sql = "SELECT id, firstname, surname, email, type FROM customer";
 
+        $resultado = $this->db->query($sql);
 
-        return $this->conexion
-            ->query("SELECT id, isbn, tit FROM customer")
-            ->fetchAll();
+        return $resultado->fetchAll();
     }
 
+    /*
+        Insertar cliente
+    */
     public function create($id, $firstname, $surname, $email, $type)
     {
-        $sql = "INSERT INTO customers (id, firstname, surname, email, type)
-            VALUES (:id, :firstname, :surname, :email, :type)";
+        $sql = "
+            INSERT INTO customer
+            (id, firstname, surname, email, type)
+            VALUES
+            (:id, :firstname, :surname, :email, :type)
+        ";
 
-        $stm = $this->conexion->prepare($sql);
-        return $stm->execute([
-            ":id" => $id,
-            ":firstname" => $firstname,
-            ":surname" => $surname,
-            ":email" => $email,
-            ":type" => $type
-        ]);
-    }
+        $stmt = $this->db->prepare($sql);
 
-
-    public function update($id, $firstname, $surname, $email, $type)
-    {
-        $sql = "UPDATE customers 
-            SET firstname = :firstname,
-                surname = :surname,
-                email = :email,
-                type = :type
-            WHERE id = :id";
-
-        $stm = $this->conexion->prepare($sql);
-        return $stm->execute([
-            ":id" => $id,
-            ":firstname" => $firstname,
-            ":surname" => $surname,
-            ":email" => $email,
-            ":type" => $type
-        ]);
-    }
-
-    public function delete($id)
-    {
-        $sql = "DELETE FROM customers WHERE id = :id";
-        $stm = $this->conexion->prepare($sql);
-        return $stm->execute([
-            ":id" => $id
+        return $stmt->execute([
+            ':id'        => $id,
+            ':firstname' => $firstname,
+            ':surname'  => $surname,
+            ':email'    => $email,
+            ':type'     => $type
         ]);
     }
 }
