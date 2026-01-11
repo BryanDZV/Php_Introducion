@@ -2,6 +2,8 @@
 
 namespace Bryan\Libros\Controllers;
 
+session_start();
+
 use Bryan\Libros\Models\CustomerModel;
 use Bryan\Libros\Models\BookModel;
 use Bryan\Libros\Models\SaleModel;
@@ -19,12 +21,23 @@ class SaleController
 
     public function seleccionarLibros()
     {
-        $customerId = $_POST['customer_id'];
+        try {
+            if (!empty($_POST['customer_id'])) {
+                $customerId = $_POST['customer_id'];
 
-        $modelo = new BookModel();
-        $libros = $modelo->getAll();
+                $modelo = new BookModel();
+                $libros = $modelo->getAll();
 
-        require __DIR__ . '/../Views/sale_libros.php';
+                require __DIR__ . '/../Views/sale_libros.php';
+            } else {
+
+                $error = "Selecciona un cliente";
+                require __DIR__ . "../../Views/Sale_Cliente.php";
+            }
+        } catch (Exception $e) {
+            $mensaje = $e->getMessage();
+            require __DIR__ . '../../Views/Sale_Resultado.php';
+        }
     }
 
     public function procesarVenta()

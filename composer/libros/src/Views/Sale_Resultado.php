@@ -8,7 +8,11 @@
 
 <body>
 
-    <h2><?php echo $mensaje; ?></h2>
+    <h2><?php if (!empty($mensaje)): ?>
+            <p style="color:red"><?= $mensaje ?></p>
+        <?php endif; ?>
+
+    </h2>
 
     <a href="index.php">Volver al inicio</a>
 

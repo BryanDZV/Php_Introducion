@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Seleccionar libros</title>
+    <link rel="stylesheet" href="/../../../../composer/libros/src/Views/styleLibros.css">
 </head>
 
 <body>
@@ -20,6 +21,7 @@
                 <th>Precio (€)</th>
                 <th>Stock</th>
                 <th>Cantidad</th>
+                <th>Total</th>
             </tr>
 
             <?php
@@ -34,6 +36,7 @@
                 echo "<td>";
                 echo "<input type='number' min='0' name='libros[{$libro['id']}]' value='0'>";
                 echo "</td>";
+                echo "<td>{$total}</td>";
                 echo "</tr>";
             }
             ?>

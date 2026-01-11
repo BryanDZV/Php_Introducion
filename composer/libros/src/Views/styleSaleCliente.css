@@ -1,0 +1,61 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Cuerpo de la página */
+body {
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal */
+div {
+  background-color: white;
+  width: 300px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+/* Título */
+h2 {
+  margin-bottom: 20px;
+}
+
+/* Select */
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+}
+
+/* Botón */
+button {
+  width: 100%;
+  padding: 8px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Efecto hover (opcional pero típico) */
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Enlace */
+a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+/* Enlace centrado */
+div a {
+  display: block;
+  margin-top: 10px;
+}
