@@ -29,7 +29,7 @@ class CustomerModel
         $stm = $this->conexion->query($sql);
         return $stm->fetchAll();
     }
-
+    //id	firstname	surname	email	type
     public function create($custid, $cname, $email, $phone, $address)
     {
         $sql = "INSERT INTO customers (custid,cname,email,phone,address)
