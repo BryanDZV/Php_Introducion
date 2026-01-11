@@ -15,7 +15,7 @@ class SaleModel
     }
 
     /*
-        Insercion_venta_libro (1, [id => cantidad])
+        (1, [id => cantidad])
     */
     public function insercion_venta_libro($clienteId, $libros)
     {

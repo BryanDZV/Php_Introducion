@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Crear cliente</title>
-    <link rel="stylesheet" href="/../../../../composer/libros/src/Views/styleCliente.css">
+    <link rel="stylesheet" href="/././././composer/libros/src/Views/styleCliente.css">
 </head>
 
 <body>
@@ -23,6 +23,7 @@
         <input type="text" name="firstname" placeholder="Nombre"><br>
         <input type="text" name="surname" placeholder="Apellidos"><br>
         <input type="email" name="email" placeholder="Email"><br>
+        <input type="password" name="password" placeholder="Contraseña" required min="2">
 
         <select name="type">
             <option value="">Seleccione tipo</option>
@@ -31,7 +32,6 @@
         </select><br>
 
         <button type="submit" name="registrar">Registrar</button>
-        <a href="../Views/Sale_Cliente.php">Volver </a>
     </form>
 
 </body>

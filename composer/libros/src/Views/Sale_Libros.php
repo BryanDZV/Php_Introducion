@@ -21,7 +21,7 @@
                 <th>Precio (€)</th>
                 <th>Stock</th>
                 <th>Cantidad</th>
-                <th>Total</th>
+
             </tr>
 
             <?php
@@ -36,13 +36,10 @@
                 echo "<td>";
                 echo "<input type='number' min='0' name='libros[{$libro['id']}]' value='0'>";
                 echo "</td>";
-                echo "<td>{$total}</td>";
                 echo "</tr>";
             }
             ?>
         </table>
-
-        <p><strong>El total se calcula al enviar el formulario</strong></p>
 
         <button type="submit">Finalizar compra</button>
     </form>

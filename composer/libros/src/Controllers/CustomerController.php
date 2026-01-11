@@ -10,14 +10,10 @@ class CustomerController
     {
         $modelo = new CustomerModel();
 
-        /*
-            Si el formulario se ha enviado
-        */
+
         if (isset($_POST['registrar'])) {
 
-            /*
-                Recogemos datos
-            */
+
             if (isset($_POST['firstname'])) {
                 $firstname = $_POST['firstname'];
             } else {
@@ -41,23 +37,27 @@ class CustomerController
             } else {
                 $type = '';
             }
+            if (isset($_POST['password'])) {
+                $password = $_POST['password'];
+            } else {
+                $password = '';
+            }
 
-            /*
-                Validamos
-            */
-            if ($firstname !== '' && $surname !== '' && $email !== '' && $type !== '') {
+
+            if ($firstname !== '' && $surname !== '' && $email !== '' && $type !== '' && $password !== '') {
 
                 $modelo->create(
-                    uniqid(),
+
                     $firstname,
                     $surname,
                     $email,
-                    $type
+                    $type,
+                    $password,
                 );
 
                 $mensaje = "cliente_creado";
 
-                require __DIR__ . '/../Views/crear_cliente.php';
+                header("Location:index.php");
             } else {
 
                 $error = "Faltan datos";
@@ -65,9 +65,7 @@ class CustomerController
             }
         } else {
 
-            /*
-                Mostrar formulario
-            */
+
             require __DIR__ . '/../Views/crear_cliente.php';
         }
     }
