@@ -1,0 +1,252 @@
+🔴 EJERCICIO 1 — FORMULARIO + VALIDACIÓN + FLUJO
+
+Se desea crear una aplicación en PHP que muestre un formulario con los campos:
+
+nombre
+
+edad
+
+Al enviar el formulario:
+
+Si falta algún dato, se mostrará un mensaje de error.
+
+Si la edad es menor de 18, se mostrará “Acceso denegado”.
+
+En caso contrario, se mostrará “Acceso permitido”.
+
+El formulario y la lógica deben estar separados en distintos archivos.
+No se permite el uso de exit.
+
+🔴 EJERCICIO 2 — DOS SUBMIT + CONTROL DE FLUJO
+
+Crear un formulario con:
+
+un campo nombre
+
+dos botones submit: Aceptar y Cancelar
+
+Dependiendo del botón pulsado:
+
+Si se pulsa Aceptar, se mostrará “Formulario aceptado”.
+
+Si se pulsa Cancelar, se mostrará “Operación cancelada”.
+
+🟠 EJERCICIO 3 — CHECKBOX ARRAY + VALIDACIÓN
+
+Crear un formulario que permita seleccionar varias aficiones mediante checkbox:
+
+Deportes
+
+Música
+
+Cine
+
+Lectura
+
+Al enviar:
+
+Si no se selecciona ninguna, mostrar error.
+
+Si se seleccionan, mostrar una lista con todas las aficiones elegidas.
+
+🟠 EJERCICIO 4 — SELECT + COOKIE
+
+Crear un formulario con un <select> para elegir idioma:
+
+Español
+
+Inglés
+
+Al enviar:
+
+Guardar el idioma en una cookie durante 1 día.
+
+Mostrar el idioma seleccionado al recargar la página.
+
+Incluir un botón para borrar la cookie.
+
+🟡 EJERCICIO 5 — SESIÓN + LOGIN SIMPLE
+
+Simular un login con:
+
+Usuario fijo: admin
+
+Contraseña fija: 1234
+
+Al enviar el formulario:
+
+Si las credenciales son correctas, guardar el usuario en sesión.
+
+Si no, mostrar mensaje de error.
+
+Crear una página protegida que solo pueda verse si hay sesión iniciada.
+
+🟡 EJERCICIO 6 — SESIÓN + ARRAY (CARRITO)
+
+Crear un listado de productos usando el siguiente array:
+
+$productos = [
+  ["id"=>1, "nombre"=>"Teclado", "precio"=>20],
+  ["id"=>2, "nombre"=>"Ratón", "precio"=>10],
+  ["id"=>3, "nombre"=>"Pantalla", "precio"=>150]
+];
+
+
+Mostrar una tabla con checkbox para seleccionar productos.
+Al enviar:
+
+Guardar los productos seleccionados en sesión.
+
+Mostrar el contenido del carrito.
+
+🟢 EJERCICIO 7 — ARRAYS + TABLA DINÁMICA
+
+Dado el siguiente array de usuarios:
+
+$usuarios = [
+  ["id"=>1, "nombre"=>"Ana", "edad"=>20],
+  ["id"=>2, "nombre"=>"Luis", "edad"=>17],
+  ["id"=>3, "nombre"=>"María", "edad"=>25]
+];
+
+
+Mostrar una tabla HTML con los datos.
+Los usuarios menores de edad deben mostrarse con un mensaje “Menor de edad”.
+
+🟢 EJERCICIO 8 — FUNCIONES + STRINGS
+
+Crear una función que reciba un texto y:
+
+Elimine etiquetas HTML.
+
+Elimine espacios sobrantes.
+
+Devuelva el texto en mayúsculas.
+
+Usar la función al procesar un formulario.
+
+🔵 EJERCICIO 9 — POO BÁSICA (CUANDO TOCA)
+
+Crear una clase Usuario con:
+
+Propiedades privadas: nombre, edad
+
+Constructor
+
+Getters
+
+Método esMayorEdad() que devuelva true o false
+
+Crear varios objetos Usuario y mostrarlos en una tabla.
+
+🔵 EJERCICIO 10 — CLASE + ARRAY
+
+Dado un array de datos:
+
+$datos = [
+  ["nombre"=>"Ana", "edad"=>20],
+  ["nombre"=>"Luis", "edad"=>17]
+];
+
+
+Crear objetos Usuario a partir del array y mostrar:
+
+nombre
+
+si es mayor o menor de edad
+
+🟣 EJERCICIO 11 — JSON (LECTURA)
+
+Dado el siguiente archivo usuarios.json:
+
+[
+  {"id":1,"nombre":"Ana","edad":20},
+  {"id":2,"nombre":"Luis","edad":17}
+]
+
+
+Leer el fichero JSON y mostrar los datos en una tabla HTML.
+
+🟣 EJERCICIO 12 — JSON (ESCRITURA)
+
+Crear un formulario que pida:
+
+nombre
+
+edad
+
+Al enviar:
+
+Guardar los datos en un archivo JSON.
+
+Mostrar todos los registros guardados.
+
+🟤 EJERCICIO 13 — SUBIDA DE IMÁGENES
+
+Crear un formulario para subir una imagen.
+
+Validar:
+
+Tipo (jpg o png)
+
+Tamaño máximo
+
+Guardar la imagen en una carpeta uploads y mostrar su nombre.
+
+⚫ EJERCICIO 14 — PDO CRUD BÁSICO
+
+Crear una tabla usuarios con:
+
+id
+
+nombre
+
+edad
+
+Crear un formulario para insertar usuarios usando PDO con prepare.
+Mostrar los usuarios en una tabla.
+
+⚫ EJERCICIO 15 — CRUD + ELIMINAR
+
+Partiendo del ejercicio anterior:
+
+Añadir un botón “Eliminar” por cada usuario.
+
+Eliminar por id usando PDO.
+
+⏱️ CUÁNTOS DEBES HACER (ESTRATEGIA REAL)
+
+👉 NO intentes hacerlos todos seguidos.
+
+Plan recomendado (3 días):
+
+Día 1 → Ejercicios 1–6
+
+Día 2 → Ejercicios 7–11
+
+Día 3 → Ejercicios 12–15 + repaso
+
+Si haces 10 bien hechos, apruebas.
+Si haces 15, vas con seguridad.
+
+🧠 REGLA DE ORO (EXAMEN)
+
+No pienses “qué hago ahora”.
+Piensa: “esto ya lo he hecho antes”.
+
+La repetición es a propósito.
+
+🔥 SIGUIENTE PASO
+
+👉 Empieza por el Ejercicio 1 o 2
+👉 Cuando termines uno, me pasas SOLO el código
+👉 Yo lo corrijo modo profesora estricta:
+
+nota 1–10
+
+aprueba / suspende
+
+qué te restaría puntos
+
+Estoy contigo estos 3 días.
+Esto se aprueba 💪
