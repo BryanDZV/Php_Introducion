@@ -13,10 +13,6 @@ $dotenv->load();
 use Bryan\Libros\Controllers\CustomerController;
 use Bryan\Libros\Controllers\SaleController;
 
-/*
-    1. Recogemos la acción
-    2. Si no viene ninguna, mostramos clientes
-*/
 
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
@@ -27,9 +23,6 @@ if (isset($_GET['action'])) {
 $customerController = new CustomerController();
 $saleController     = new SaleController();
 
-/*
-    Decidimos qué método ejecutar
-*/
 
 if ($action === 'crearCliente') {
 
