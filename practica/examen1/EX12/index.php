@@ -13,10 +13,13 @@
             echo htmlspecialchars($_GET["parametro"]);
         } elseif (isset($_GET["mensaje"])) {
             $datos = json_decode(file_get_contents("./archivoJson.json"), true);
-            var_dump($datos);
-            foreach ($datos as $key => $value) {
-                echo htmlspecialchars($value);
-                echo "-----";
+            if (is_array($datos)) {
+                foreach ($datos as $persona) {
+                    echo htmlspecialchars($persona["nombre"]);
+                    echo " - ";
+                    echo htmlspecialchars($persona["edad"]);
+                    echo "-----";
+                }
             }
         } ?>
     </div>
