@@ -8,11 +8,17 @@
 </head>
 
 <body>
+    <div>
+        <?php
+        if (isset($_GET["parametro"])) {
+            echo htmlspecialchars($_GET["parametro"]);
+        } ?>
+    </div>
     <form action="./procesar.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="img" id="">
+        <input type="file" name="file" id="">
         <input type="submit" value="enviar">
     </form>
-    <p>FORMULARI </p>
+
 </body>
 
 </html>

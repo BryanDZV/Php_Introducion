@@ -216,37 +216,118 @@ Eliminar por id usando PDO.
 
 ⏱️ CUÁNTOS DEBES HACER (ESTRATEGIA REAL)
 
-👉 NO intentes hacerlos todos seguidos.
+🔵 SUSTITUTO DE EJERCICIO 14 — “CRUD SIN BD”
+🧪 EJERCICIO 14 (VERSIÓN EXAMEN OFFLINE)
 
-Plan recomendado (3 días):
+Enunciado (tipo profe):
 
-Día 1 → Ejercicios 1–6
+Crear un sistema de gestión de usuarios usando un fichero JSON.
+Cada usuario tendrá:
 
-Día 2 → Ejercicios 7–11
+id
 
-Día 3 → Ejercicios 12–15 + repaso
+nombre
 
-Si haces 10 bien hechos, apruebas.
-Si haces 15, vas con seguridad.
+edad
 
-🧠 REGLA DE ORO (EXAMEN)
+Crear un formulario para insertar usuarios.
+Mostrar los usuarios en una tabla.
 
-No pienses “qué hago ahora”.
-Piensa: “esto ya lo he hecho antes”.
+📌 Lo que se espera que hagas
 
-La repetición es a propósito.
+Leer usuarios.json
 
-🔥 SIGUIENTE PASO
+Añadir usuario
 
-👉 Empieza por el Ejercicio 1 o 2
-👉 Cuando termines uno, me pasas SOLO el código
-👉 Yo lo corrijo modo profesora estricta:
+Guardar
 
-nota 1–10
+Mostrar tabla
 
-aprueba / suspende
+👉 Es exactamente el PDO CRUD, pero con ficheros.
 
-qué te restaría puntos
+🔵 SUSTITUTO DE EJERCICIO 15 — “ELIMINAR”
+🧪 EJERCICIO 15 (VERSIÓN EXAMEN OFFLINE)
 
-Estoy contigo estos 3 días.
-Esto se aprueba 💪
+Enunciado:
+
+Partiendo del ejercicio anterior,
+añadir un botón “Eliminar” por cada usuario.
+Al pulsar, se eliminará el usuario por su id.
+
+📌 Patrón esperado
+
+Botón con id
+
+$_POST["id"]
+
+Leer JSON
+
+Quitar ese id
+
+Guardar JSON
+
+🧠 MUY IMPORTANTE: ESTO ES EXACTAMENTE LO MISMO QUE PDO
+PDO	FICHERO
+SELECT *	file_get_contents
+INSERT	$array[] = nuevo
+DELETE WHERE id	unset()
+UPDATE	modificar posición
+execute()	file_put_contents
+
+👉 Si dominas esto, PDO te saldrá cuando toque.
+
+🔥 BATERÍA DE EJERCICIOS (TIPO EXAMEN, TEXTO PLANO)
+
+Haz SOLO LOS QUE TE DIGO, no todos.
+
+🧪 EJERCICIO A — CRUD BÁSICO (OBLIGATORIO)
+
+Fichero usuarios.json
+
+Formulario: nombre, edad
+
+Mostrar tabla
+
+Botón eliminar
+
+👉 Este es el MÁS IMPORTANTE
+
+🧪 EJERCICIO B — EDITAR (SI TE DA TIEMPO)
+
+Botón “Editar”
+
+Cargar datos en formulario
+
+Modificar usuario
+
+Guardar fichero
+
+🧪 EJERCICIO C — FILTRAR (FÁCIL, SUMA)
+
+Mostrar solo mayores de edad
+
+Usar if dentro del foreach
+
+🧪 EJERCICIO D — GD (MUY POSIBLE)
+
+Enunciado típico:
+
+Subir una imagen y crear una miniatura de 150x150.
+
+📌 Patrón:
+
+imagecreatefromjpeg
+
+imagescale
+
+imagejpeg
+
+👉 No inventes filtros raros.
+
+🧪 EJERCICIO E — FICHEROS TXT (RÁPIDO)
+
+Guardar comentarios en comentarios.txt
+
+Mostrar contenido
+
+Añadir nueva línea
