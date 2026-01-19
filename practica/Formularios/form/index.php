@@ -11,4 +11,4 @@ Detecta qué botón se pulsó
 
 Muestra mensaje distinto
 
-📌 Debes usar name + value*/
+ Debes usar name + value*/
