@@ -1,38 +1,36 @@
 <?php
-$xml = simplexml_load_file("./CINESLYS_BASEDEDATOS.txt");
+$accion = $_GET['accion'] ?? 'listar';
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
-    <title>Cartelera de Cine</title>
+    <title>Cartelera</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 
 <body>
 
-    <h1>🎬 Cartelera de Cine</h1>
+    <nav>
+        <a href="index.php">🎬 Cartelera</a>
+        <a href="index.php?accion=crear">➕ Nueva película</a>
+    </nav>
 
-    <?php foreach ($xml->pelicula as $pelicula): ?>
-        <div style="border:1px solid black; margin:10px; padding:10px">
-            <h2><?php echo $pelicula->titulo; ?></h2>
-            <p>Duración: <?php echo $pelicula->duracion; ?> minutos</p>
+    <?php
+    switch ($accion) {
+        case 'crear':
+            require "vistas/crear.php";
+            break;
 
-            <strong>Sesiones:</strong>
-            <ul>
-                <?php foreach ($pelicula->sesiones->sesion as $sesion): ?>
-                    <li><?php echo $sesion; ?></li>
-                <?php endforeach; ?>
-            </ul>
+        case 'editar':
+            require "vistas/editar.php";
+            break;
 
-            <!-- Acciones de administrador -->
-            <a href="eliminar.php?id=<?php echo $pelicula['id']; ?>"> Eliminar</a>
-        </div>
-    <?php endforeach; ?>
-
-    <hr>
-    <a href="insertar.php"> Añadir película</a>
+        default:
+            require "vistas/listar.php";
+    }
+    ?>
 
 </body>
 
