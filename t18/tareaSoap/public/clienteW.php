@@ -1,7 +1,6 @@
 <?php
 $cliente = new SoapClient(
-    'http://localhost/tareaSoap/servidorSoap/servicio.wsdl'
+    'http://localhost/php_introducion/t18/tareaSoap/servidorSoap/servicio.wsdl'
 );
 
 echo $cliente->getPVP('PROD1');
-print_r($cliente->getFamilias());

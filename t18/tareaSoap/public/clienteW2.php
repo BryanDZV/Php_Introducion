@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$cliente = new \Src\Operaciones();
+$cliente = new \Bryan\TareaSoap\Operaciones();
 
-echo $cliente->getPVP('PROD1');
+echo "<pre>";
+echo "PVP: " . $cliente->getPVP('PROD1');
+echo "</pre>";

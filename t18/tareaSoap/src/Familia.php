@@ -1,8 +1,8 @@
 <?php
 
-namespace Src;
+namespace Bryan\TareaSoap;
 
-use Config\Conexion;
+use Bryan\TareaSoap\Config\Conexion;
 
 class Familia
 {

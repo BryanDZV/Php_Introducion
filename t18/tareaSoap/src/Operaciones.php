@@ -1,6 +1,11 @@
 <?php
 
-namespace Src;
+namespace Bryan\TareaSoap;
+
+use Bryan\TareaSoap\Producto;
+use Bryan\TareaSoap\Familia;
+use Bryan\TareaSoap\Stock;
+use Bryan\TareaSoap\Config\Conexion;
 
 /**
  * @soap
@@ -19,9 +24,9 @@ class Operaciones
     /**
      * @soap
      */
-    public function getStock(string $prod, string $tienda): int
+    public function getStock(string $producto, string $tienda): int
     {
-        return Stock::getStock($prod, $tienda);
+        return Stock::getStock($producto, $tienda);
     }
 
     /**
@@ -35,18 +40,13 @@ class Operaciones
     /**
      * @soap
      */
-    /**
-     * @soap
-     */
     public function getProductosFamilia(string $familia): array
     {
-        $db = \Config\Conexion::conectar();
-
+        $db = Conexion::conectar();
         $stmt = $db->prepare(
             "SELECT cod FROM productos WHERE familia = ?"
         );
         $stmt->execute([$familia]);
-
         return $stmt->fetchAll(\PDO::FETCH_COLUMN);
     }
 }

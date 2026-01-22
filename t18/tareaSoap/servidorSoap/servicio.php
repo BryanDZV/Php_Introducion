@@ -1,10 +1,10 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Src\Operaciones;
+use Bryan\TareaSoap\Operaciones;
 
 $server = new SoapServer(null, [
-    'uri' => 'http://localhost/tareaSoap/servidorSoap'
+    'uri' => 'http://localhost/php_introducion/t18/tareaSoap/servidorSoap'
 ]);
 
 $server->setClass(Operaciones::class);

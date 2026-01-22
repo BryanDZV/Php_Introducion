@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost/php_introducion/t18/tareaSoap/servidorSoap/servicioW.php" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Bryan.TareaSoap.Operaciones" targetNamespace="http://localhost/php_introducion/t18/tareaSoap/servidorSoap/servicioW.php">
+  <types>
+    <xsd:schema targetNamespace="http://localhost/php_introducion/t18/tareaSoap/servidorSoap/servicioW.php">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </xsd:schema>
+  </types>
+  <portType name="Bryan.TareaSoap.OperacionesPort">
+    <operation name="getPVP">
+      <input message="tns:getPVPIn"/>
+    </operation>
+    <operation name="getStock">
+      <input message="tns:getStockIn"/>
+    </operation>
+    <operation name="getFamilias">
+      <input message="tns:getFamiliasIn"/>
+    </operation>
+    <operation name="getProductosFamilia">
+      <input message="tns:getProductosFamiliaIn"/>
+    </operation>
+  </portType>
+  <binding name="Bryan.TareaSoap.OperacionesBinding" type="tns:Bryan.TareaSoap.OperacionesPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getPVP">
+      <soap:operation soapAction="http://localhost/php_introducion/t18/tareaSoap/servidorSoap/servicioW.php#getPVP"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/php_introducion/t18/tareaSoap/servidorSoap/servicioW.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/php_introducion/t18/tareaSoap/servidorSoap/servicioW.php"/>
+      </output>
+    </operation>
+    <operation name="getStock">
+      <soap:operation soapAction="http://localhost/php_introducion/t18/tareaSoap/servidorSoap/servicioW.php#getStock"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/php_introducion/t18/tareaSoap/servidorSoap/servicioW.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/php_introducion/t18/tareaSoap/servidorSoap/servicioW.php"/>
+      </output>
+    </operation>
+    <operation name="getFamilias">
+      <soap:operation soapAction="http://localhost/php_introducion/t18/tareaSoap/servidorSoap/servicioW.php#getFamilias"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/php_introducion/t18/tareaSoap/servidorSoap/servicioW.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/php_introducion/t18/tareaSoap/servidorSoap/servicioW.php"/>
+      </output>
+    </operation>
+    <operation name="getProductosFamilia">
+      <soap:operation soapAction="http://localhost/php_introducion/t18/tareaSoap/servidorSoap/servicioW.php#getProductosFamilia"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/php_introducion/t18/tareaSoap/servidorSoap/servicioW.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/php_introducion/t18/tareaSoap/servidorSoap/servicioW.php"/>
+      </output>
+    </operation>
+  </binding>
+  <message name="getPVPIn">
+    <part name="cod" type="xsd:anyType"/>
+  </message>
+  <message name="getStockIn">
+    <part name="producto" type="xsd:anyType"/>
+    <part name="tienda" type="xsd:anyType"/>
+  </message>
+  <message name="getFamiliasIn"/>
+  <message name="getProductosFamiliaIn">
+    <part name="familia" type="xsd:anyType"/>
+  </message>
+  <service name="Bryan.TareaSoap.OperacionesService">
+    <port name="Bryan.TareaSoap.OperacionesPort" binding="tns:Bryan.TareaSoap.OperacionesBinding">
+      <soap:address location="http://localhost/php_introducion/t18/tareaSoap/servidorSoap/servicioW.php"/>
+    </port>
+  </service>
+</definitions>

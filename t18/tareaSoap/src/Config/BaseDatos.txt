@@ -35,6 +35,6 @@ create table if not exists stocks(
 
 );
 -- 3.- Creamos un usuario  descomentalo si lo necesitas
--- create user alumno@'localhost' identified by "alumno";
+create user alumno@'localhost' identified by "alumno";
 -- 4.- Le damos permiso en la base de datos "tarea6"
 grant all on tarea6.* to alumno@'localhost';

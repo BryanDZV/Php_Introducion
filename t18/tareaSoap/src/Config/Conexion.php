@@ -1,6 +1,6 @@
 <?php
 
-namespace Config;
+namespace Bryan\TareaSoap\Config;
 
 use PDO;
 
@@ -12,9 +12,7 @@ class Conexion
             "mysql:host=localhost;dbname=tarea6;charset=utf8",
             "alumno",
             "alumno",
-            [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-            ]
+            [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
         );
     }
 }

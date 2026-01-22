@@ -1,18 +1,18 @@
 <?php
 
-namespace Src;
+namespace Bryan\TareaSoap;
 
-use Config\Conexion;
+use Bryan\TareaSoap\Config\Conexion;
 
 class Stock
 {
-    public static function getStock(string $prod, string $tienda): int
+    public static function getStock(string $producto, string $tienda): int
     {
         $db = Conexion::conectar();
         $stmt = $db->prepare(
             "SELECT unidades FROM stock WHERE producto = ? AND tienda = ?"
         );
-        $stmt->execute([$prod, $tienda]);
+        $stmt->execute([$producto, $tienda]);
         return (int)$stmt->fetchColumn();
     }
 }
